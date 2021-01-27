@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[SubType]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [SubTypeName] NVARCHAR(50) NOT NULL
+)

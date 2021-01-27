@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+@*<partial name="_LoginPartial" />*@
+<html lang="en">
+<head>
+    
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/blog-rtl/" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/css/blog.rtl.css" rel="stylesheet" />
+    <link href="~/css/CustomStyles.css" rel="stylesheet" />
+
+    <style>
+        #NavMargin{
+            margin-top:-35px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <header>
+        <div class="row jumbotron">
+            <h1 class="col">ALVEYS</h1>
+        </div>
+        <nav id="NavMargin" class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Customer Navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#customerNavbar" aria-controls="customerNavbar"
+                        aria-expanded="false" aria-label="Toggle Navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="customerNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Products" asp-action="Index" class="nav-link">View Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">New</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Deals</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownNavLink" data-toggle="dropdown" aria-expanded="false">DropDown</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownNavLink">
+                                <li><a class="dropdown-item">Action</a></li>
+                                <li><a class="dropdown-item">Another Action</a></li>
+                                <li><a class="dropdown-item">More Actions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <partial name="_CartPartial" />
+                        </li>
+                        <li>
+                            <partial name="_LoginPartial" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+        <div class="container container-fluid">
+            <div class="row">
+                <h6><span class="fa fa-phone"></span>   1-456-456-7874</h6>
+                <h6><span class="fa fa-mail-bulk"></span>   example@mail.com</h6>
+            </div>
+            <div class="row bg-light">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <h4><a class="text-light" href="#footList1" data-toggle="collapse">About ALVEYS</a></h4>
+                    <ul id="footList1">
+                        <li>About Alveys</li>
+                        <li>Newsroom</li>
+                        <li>Checkout on Instagram</li>
+                        <li>Careers</li>
+                        <li>Affiliates</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <h4><a class="text-light" href="#footList2" data-toggle="collapse">My Account</a></h4>
+                    <ol id="footList2">
+                        <li>Account Settings</li>
+                        <li>Profile</li>
+                        <li>Order Status</li>
+                        <li>Purchase History</li>
+                        <li>Rewards</li>
+                        <li>ALVEYS Credit Card</li>
+                    </ol>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <h4><a class="text-light" href="#footList3" data-toggle="collapse">Help</a></h4>
+                    <ul id="footList3">
+                        <li>Customer Service</li>
+                        <li>Returns &amp; Exchange</li>
+                        <li>Shipping</li>
+                        <li>Billing</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+                <div class="clearfix visible"></div>
+            </div>
+        </div>
+    </footer><
+    <script src="~/lib/popper.js/popper.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
