@@ -8,5 +8,6 @@
     [ExpirationYear] INT NOT NULL, 
     [FirstName] NVARCHAR(50) NOT NULL, 
     [LastName] NVARCHAR(50) NOT NULL, 
-    [Phone] NCHAR(10) NOT NULL
+    [Phone] NCHAR(10) NOT NULL, 
+    CONSTRAINT [FK_PaymentType_ToUser] FOREIGN KEY ([User_Id]) REFERENCES [User]([Id])
 )
