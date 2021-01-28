@@ -14,5 +14,10 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult AddNewProduct()
+        {
+            return View();
+        }
     }
 }
