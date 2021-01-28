@@ -4,11 +4,22 @@
 
 <partial name="_NavManageProductsPartial" />
 <h1>@ViewData["Title"]</h1>
-<form class="form">
+<form class="container">
+    <div class="row">
+        <div class="col">
+            <label class="form-label">Product Name</label>
+            <input type="text" class="form-control" placeholder="Enter Name" required/>
+            <div class="invalid-feedback">
+                Enter Product Name
+            </div>
+        </div>
+    </div>
+</form>
+<!--<form class="form">
     <div class="form-control">
         <label class="form-label">Product Name</label>
         <input type="text" />
-    </div>
+    </div>-->
 
 
     <!--
@@ -17,36 +28,18 @@
         Create control group for GEN TYPE
         CERATE control group for SUB Type
         -->
-    <div class="form-control container">
-        <h4 class="form-label">Brand</h4>
-        <div class="dropdown">
-            <a class="dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false" href="#">DropDown</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown">
-                <li><a class="dropdown-item">Action</a></li>
-                <li><a class="dropdown-item">Another Action</a></li>
-                <li><a class="dropdown-item">More Actions</a></li>
-            </ul>
-        </div>
-        
-    </div>
-    <!--<div class="form-control">
-        <label class="form-label">General Type</label>
-        <input type="text" />
-    </div>
-    <div class="form-control">
-        <label class="form-label">SubType</label>
-        <input type="text" />
-    </div>-->
 
-    <!---->
-
-    <!--<div class="form-control">
-        <label class="form-label">Retail Price</label>
-        <input type="text" />
+    <!--<div class="dropdown">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButtonSM" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSM">
+            <li><h6 class="dropdown-header">Dropdown header</h6></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
     </div>
-    <div class="form-control">
-        <label class="form-label">Tax</label>
-        <input type="text" />
-    </div>
-    <button>Add Stock</button>-->
-</form>
+</form>-->
