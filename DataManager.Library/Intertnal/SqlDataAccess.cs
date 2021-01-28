@@ -47,7 +47,7 @@ namespace DataManager.Library.Intertnal
 
         public List<T> LoadDataInTransaction<T, U>(string storedProcedure, U parameters)
         {
-            List<T> rows = _connection.Query<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure, transaction: _transaction).ToList();
+            List<T> rows = _connection.Query<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure, transaction: _transaction).AsList();
             return rows;
         }
 
