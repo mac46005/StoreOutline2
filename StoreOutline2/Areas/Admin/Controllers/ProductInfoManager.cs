@@ -14,5 +14,20 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult AddEditBrand()
+        {
+            return View();
+        }
+
+        public IActionResult AddEditGeneralType()
+        {
+            return View();
+        }
+
+        public IActionResult AddEditSubType()
+        {
+            return View();
+        }
     }
 }
