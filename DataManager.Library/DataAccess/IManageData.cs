@@ -8,7 +8,7 @@ namespace DataManager.Library.DataAccess
     {
         void Delete(int id);
         void Edit(T type);
-        void GetAll();
+        List<T> GetAll();
         void Save(T type);
         T GetById(int id);
     }

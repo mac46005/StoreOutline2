@@ -1,10 +1,10 @@
-﻿@model List<BrandModel>
+﻿@model List<GeneralTypeModel>
 <div class="jumbotron">
     <h1>Brands List</h1>
 </div>
 @if (TempData["deleted"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show m-5" role="alert">
         @TempData["deleted"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -19,19 +19,17 @@
         <table class="table bg-white table-bordered table-striped container">
             <thead>
                 <tr>
-                    <th class="col-3">Brand Name</th>
-                    <th class="col-5">Description</th>
+                    <th class="col-3">General Type</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var brand in Model)
+                @foreach (var genType in Model)
                 {
                     <tr>
-                        <td>@brand.Name</td>
-                        <td>@brand.Description</td>
-                        <td class="col-1"><a asp-action="AddEditBrand" asp-route-id="@brand.Id" class="btn btn-secondary">Edit</a></td>
-                        <td class="col-1"><a asp-action="Delete" asp-route-category="Brand" asp-route-id="@brand.Id" asp-route-name="@brand.Name" class="btn btn-danger">Delete</a></td>
+                        <td>@genType.TypeName</td>
+                        <td class="col-1"><a asp-action="AddEditBrand" asp-route-id="@genType.Id" class="btn btn-secondary">Edit</a></td>
+                        <td class="col-1"><a asp-action="Delete" asp-route-category="GeneralType" asp-route-id="@genType.Id" asp-route-name="@genType.TypeName" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
             </tbody>

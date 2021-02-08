@@ -1,11 +1,15 @@
 ﻿@model GeneralTypeModel
 <h1>@ViewBag.AddEdit General Type</h1>
-@if (true)
+@if (ViewBag.BrandName != null)
 {
-
+    <h5>Currently Editing @ViewBag.BrandName</h5>
 }
 <form asp-action="AddEditGeneralType" method="post" class="mt-3">
-    <div class="mb-3">
+    @if (Model != null)
+    {
+        <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+    }
+    <div class="form-group mb-3">
         <label class="form-label">General Type Name:</label>
         <input asp-for="@Model.TypeName" type="text" class="form-control" placeholder="e.g Makeup" />
     </div>

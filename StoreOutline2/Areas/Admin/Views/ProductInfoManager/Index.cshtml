@@ -6,15 +6,8 @@
 <div class="container">
     @if (TempData["message"] != null)
     {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show m-5" role="alert">
             @TempData["message"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    }
-    @if (TempData["deleted"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            @TempData["deleted"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
@@ -59,7 +52,7 @@
                     <h5 class="card-title">General Product Types</h5>
                     <p class="card-text">A good example of a general type is makeup or skincare.Manage general product types for here.</p>
                     <a asp-action="AddEditGeneralType" class="btn btn-primary">Add New</a>
-                    <a class="btn btn-secondary">View List</a>
+                    <a asp-action="GeneralTypeList" class="btn btn-secondary">View List</a>
                 </div>
             </div>
         </div>

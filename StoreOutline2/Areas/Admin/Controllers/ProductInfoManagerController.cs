@@ -18,7 +18,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
         private IConfiguration _config;
         private IBrand_Data _brand_Data;
         private IGeneralType_Data _genType_Data;
-        public ProductInfoManagerController(IConfiguration config, IBrand_Data brand_Data,IGeneralType_Data genTypeData)
+        public ProductInfoManagerController(IConfiguration config, IBrand_Data brand_Data, IGeneralType_Data genTypeData)
         {
             _config = config;
             _brand_Data = brand_Data;
@@ -103,7 +103,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 ViewBag.AddEdit = "Edit";
                 var genTypeDataModel = _genType_Data.GetById((int)id);
-                return View(new GeneralTypeModel { Id = genTypeDataModel.Id,TypeName = genTypeDataModel.TypeName });
+                return View(new GeneralTypeModel { Id = genTypeDataModel.Id, TypeName = genTypeDataModel.TypeName });
             }
             else
             {
@@ -119,7 +119,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 if (generalTypeModel.Id != null)
                 {
-                    _genType_Data.Edit(new GeneralTypeDataModel { Id = generalTypeModel.Id ,TypeName = generalTypeModel.TypeName});
+                    _genType_Data.Edit(new GeneralTypeDataModel { Id = generalTypeModel.Id, TypeName = generalTypeModel.TypeName });
                     TempData[_tempKey] = $"Succesfully edited General Type: {generalTypeModel.TypeName.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
@@ -136,6 +136,16 @@ namespace StoreOutline2.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult GeneralTypeList()
+        {
+            List<GeneralTypeModel> genTypeList = new List<GeneralTypeModel>();
+            var genTypeDataModelList = _genType_Data.GetAll();
+            genTypeDataModelList.ForEach(x =>
+            {
+                genTypeList.Add(new GeneralTypeModel { Id = x.Id, TypeName = x.TypeName });
+            });
+            return View(genTypeList);
+        }
 
 
 
@@ -189,16 +199,25 @@ namespace StoreOutline2.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Delete(DeleteModel deleteModel)
         {
+            IActionResult result = View(deleteModel);
+
             if (deleteModel.Category == "Brand")
             {
                 _brand_Data.Delete(deleteModel.Id);
-                TempData["deleted"] = $"{deleteModel.Name} has been deleted";
-                return RedirectToAction("BrandList");
+                result = RedirectToAction("BrandList");
+            }
+            else if (deleteModel.Category == "GeneralType")
+            {
+                _genType_Data.Delete(deleteModel.Id);
+                result = RedirectToAction("GeneraltypeList");
             }
             else
             {
-                return View(deleteModel);
+                result = View(deleteModel);
             }
+            TempData["deleted"] = $"{deleteModel.Name} has been deleted";
+            return result;
+
         }
 
     }

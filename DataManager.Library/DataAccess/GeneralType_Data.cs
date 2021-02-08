@@ -22,9 +22,10 @@ namespace DataManager.Library.DataAccess
             _sql.SaveData("dbo.spSaveGenType", new { typeName = genType.TypeName }, _config.GetSection("Data")[SO_DB_Key]);
         }
 
-        public void GetAll()
+        public List<GeneralTypeDataModel> GetAll()
         {
-            _sql.LoadData<GeneralTypeDataModel, dynamic>("dbo.spGetAllGenType", new { }, _config.GetSection("Data")[SO_DB_Key]);
+            var typeList = _sql.LoadData<GeneralTypeDataModel, dynamic>("dbo.spGetAllGenType", new { }, _config.GetSection("Data")[SO_DB_Key]);
+            return typeList;
         }
 
         public void Edit(GeneralTypeDataModel generalTypeDataModel)
