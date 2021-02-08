@@ -81,6 +81,13 @@
     <Build Include="dbo\Stored Procedures\spSaveBrandInfo.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllBrands.sql" />
     <Build Include="dbo\Stored Procedures\spGetBrand_ById.sql" />
+    <Build Include="dbo\Stored Procedures\spEditBrand.sql" />
+    <Build Include="dbo\Stored Procedures\spDeletebrand.sql" />
+    <Build Include="dbo\Stored Procedures\spSaveGenType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllGenType.sql" />
+    <Build Include="dbo\Stored Procedures\spEditGenType.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteGenType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetGenType_ById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

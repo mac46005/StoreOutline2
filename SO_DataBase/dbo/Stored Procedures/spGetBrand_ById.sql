@@ -5,5 +5,5 @@ BEGIN
 	SET NOCOUNT ON;
 	SELECT Id,[Name],[Description]
 	FROM dbo.BrandDetail
-	WHERE Id = @Id;
+	WHERE Id = @id;
 END

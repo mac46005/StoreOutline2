@@ -27,10 +27,19 @@ namespace DataManager.Library.DataAccess
             return brandList;
         }
 
+        public void EditBrand(BrandDataModel brandDataModel)
+        {
+            _sql.SaveData("dbo.spEditBrand",brandDataModel,_configuration.GetSection("Data")[SO_DB_Key]);
+        }
         public BrandDataModel GetById(int id)
         {
-            var brandModelList= _sql.LoadData<BrandDataModel, int>("dbo.spGetBrand_ById", id, _configuration.GetSection("Data")[SO_DB_Key]);
+            var brandModelList= _sql.LoadData<BrandDataModel, dynamic>("dbo.spGetBrand_ById", new {id = id}, _configuration.GetSection("Data")[SO_DB_Key]);
             return brandModelList.Find(x => x.Id == id);
+        }
+
+        public void Delete(int id)
+        {
+            _sql.SaveData("dbo.spDeleteBrand",new { Id = id},_configuration.GetSection("Data")[SO_DB_Key]);
         }
     }
 }

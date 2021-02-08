@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[GeneralType]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [TypeName] NVARCHAR(50) NOT NULL
 )

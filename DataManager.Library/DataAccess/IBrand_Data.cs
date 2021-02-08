@@ -8,5 +8,7 @@ namespace DataManager.Library.DataAccess
         void SaveBrand(BrandDataModel brandModel);
         List<BrandDataModel> GetAll();
         BrandDataModel GetById(int id);
+        void EditBrand(BrandDataModel brandDataModel);
+        void Delete(int id);
     }
 }

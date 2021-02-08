@@ -1,0 +1,12 @@
+﻿@model DeleteModel
+<h1>Delete</h1>
+<form class="form-group" asp-action="Delete">
+    <h4 class="form-label">Are you sure you want to delete?</h4>
+    <label asp-for="@Model.Name"><h4>@Model.Name</h4></label>
+    <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+    <input type="hidden" asp-for="@Model.Category" value="@Model.Category" />
+    <div class="container">
+        <button type="submit" class="btn btn-danger col-3">DELETE</button>
+        <a asp-action="Index" class="btn btn-outline-secondary col-3">Cancel</a>
+    </div>
+</form>

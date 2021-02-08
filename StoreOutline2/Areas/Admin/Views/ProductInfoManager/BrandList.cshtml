@@ -24,7 +24,7 @@
                         <td>@brand.Name</td>
                         <td>@brand.Description</td>
                         <td class="col-1"><a asp-action="AddEditBrand" asp-route-id="@brand.Id" class="btn btn-secondary">Edit</a></td>
-                        <td class="col-1"><a class="btn btn-danger">Delete</a></td>
+                        <td class="col-1"><a asp-action="Delete" asp-route-category="Brand" asp-route-id="@brand.Id" asp-route-name="@brand.Name" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
             </tbody>

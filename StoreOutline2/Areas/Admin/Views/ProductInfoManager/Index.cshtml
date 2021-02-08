@@ -4,6 +4,20 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="container">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["deleted"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["deleted"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
     <!--BRAND NAMES-->
     <div class="row">
         <div class="col mb-3">
@@ -12,10 +26,10 @@
                      role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice"
                      focusable="false">
                     <title>Placeholder</title>
-                    <rect width="0%" height="0%" >
-                        <img src="~/img/cosmetic-logos4.png"/>
+                    <rect width="0%" height="0%">
+                        <img src="~/img/cosmetic-logos4.png" />
                     </rect>
-                    
+
                     @*<text x="50%" y="50%" fill="#dee2e6" dy=".3em">What is this label for</text>*@
                 </svg>
 
