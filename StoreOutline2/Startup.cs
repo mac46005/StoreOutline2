@@ -12,6 +12,8 @@ using StoreOutline2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DataManager.Library.Intertnal;
+using DataManager.Library.DataAccess;
 
 namespace StoreOutline2
 {
@@ -27,6 +29,8 @@ namespace StoreOutline2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -34,6 +38,11 @@ namespace StoreOutline2
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
+            services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+            services.AddTransient<IBrand_Data, Brand_Data>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

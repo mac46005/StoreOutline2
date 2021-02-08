@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataManager.Library.Intertnal
 {
-    internal class SqlDataAccess : IDisposable
+    public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
         private IConfiguration _config;
         public SqlDataAccess(IConfiguration config)
@@ -26,7 +26,7 @@ namespace DataManager.Library.Intertnal
                 return rows;
             }
         }
-        public void SaveData<T>(string storedProcedure,T parameters,string connectionStringName)
+        public void SaveData<T>(string storedProcedure, T parameters, string connectionStringName)
         {
             string connectionString = GetConnectionString(connectionStringName);
             using (IDbConnection connection = new SqlConnection(connectionString))

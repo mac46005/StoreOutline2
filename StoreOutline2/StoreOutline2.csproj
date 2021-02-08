@@ -16,7 +16,10 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataManager.Library\DataManager.Library.csproj" />
   </ItemGroup>
 
 </Project>

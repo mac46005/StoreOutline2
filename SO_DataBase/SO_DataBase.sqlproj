@@ -78,9 +78,9 @@
     <Build Include="dbo\Tables\SubCategories.sql" />
     <Build Include="dbo\Tables\SubCat_Description.sql" />
     <Build Include="dbo\Tables\SubType.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="SO_DataBase.refactorlog" />
+    <Build Include="dbo\Stored Procedures\spSaveBrandInfo.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllBrands.sql" />
+    <Build Include="dbo\Stored Procedures\spGetBrand_ById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

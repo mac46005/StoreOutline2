@@ -1,13 +1,27 @@
-﻿<!--SYSTEM TO UPLOAD PHOTO OF BRAND-->
-<h1 class="mt-3">BRAND Add/Edit</h1>
-<form class="mt-3">
+﻿@model BrandModel
+<!--SYSTEM TO UPLOAD PHOTO OF BRAND-->
+
+@if (Model != null)
+{
+    <h1>BRAND Edit</h1>
+    <h4>Editing @Model.Name</h4>
+}
+else
+{
+    <h1 class="mt-3">BRAND Add</h1>
+}
+<form asp-action="AddEditBrand" class="mt-3" method="post">
+    @if (Model != null)
+    {
+        <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+    }
     <div class="mb-3">
-        <label class="form-label">Brand Name:</label>
-        <input type="text" class="form-control" placeholder="e.g ALVEYS"/>
+        <label asp-for="@Model.Name" class="form-label">Brand Name:</label>
+        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="e.g ALVEYS" />
     </div>
     <div>
-        <label>Brand Description:</label>
-        <textarea class="form-control" rows="3" placeholder="This is the best brand make up to get!"></textarea>
+        <label asp-for="@Model.Description" class="form-label">Brand Description:</label>
+        <textarea asp-for="@Model.Description" class="form-control" rows="3" placeholder="This is the best brand make up to get!"></textarea>
     </div>
-    <button class="btn btn-outline-primary">SUBMIT</button>
+    <button class="btn btn-outline-primary" type="submit">SUBMIT</button>
 </form>
