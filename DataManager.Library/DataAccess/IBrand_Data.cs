@@ -5,10 +5,10 @@ namespace DataManager.Library.DataAccess
 {
     public interface IBrand_Data
     {
-        void SaveBrand(BrandDataModel brandModel);
-        List<BrandDataModel> GetAll();
-        BrandDataModel GetById(int id);
-        void EditBrand(BrandDataModel brandDataModel);
+        void SaveBrand(BrandModel brandModel);
+        List<BrandModel> GetAll();
+        BrandModel GetById(int id);
+        void EditBrand(BrandModel brandDataModel);
         void Delete(int id);
     }
 }

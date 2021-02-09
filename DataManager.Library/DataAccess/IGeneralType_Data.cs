@@ -2,7 +2,7 @@
 
 namespace DataManager.Library.DataAccess
 {
-    public interface IGeneralType_Data : IManageData<GeneralTypeDataModel>
+    public interface IGeneralType_Data : IManageData<GeneralTypeModel>
     {
     }
 }

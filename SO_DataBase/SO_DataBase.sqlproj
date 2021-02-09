@@ -88,6 +88,11 @@
     <Build Include="dbo\Stored Procedures\spEditGenType.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteGenType.sql" />
     <Build Include="dbo\Stored Procedures\spGetGenType_ById.sql" />
+    <Build Include="dbo\Stored Procedures\spSaveSubType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSubType_ById.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSubType_ByGeneralType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllSubType.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteSubType.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

@@ -36,16 +36,19 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-
+        /// Brand
+        /// 
+        /// 
+        /// 
         [HttpGet]
         public IActionResult AddEditBrand(int? id)
         {
             if (id != null)
             {
                 ViewBag.AddEdit = "Edit";
-                var brandDataModel = _brand_Data.GetById((int)id);
-                ViewBag.BrandName = brandDataModel.Name;
-                return View(new BrandModel { Id = brandDataModel.Id, Name = brandDataModel.Name, Description = brandDataModel.Description });
+                var brandModel = _brand_Data.GetById((int)id);
+                ViewBag.BrandName = brandModel.Name;
+                return View(brandModel);
             }
             else
             {
@@ -61,13 +64,13 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 if (brandModel.Id != null)
                 {
-                    _brand_Data.EditBrand(new BrandDataModel { Id = brandModel.Id, Name = brandModel.Name, Description = brandModel.Description });
+                    _brand_Data.EditBrand(brandModel);
                     TempData[_tempKey] = $"Succesfully edited Brand: {brandModel.Name.ToUpper()}";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    _brand_Data.SaveBrand(new BrandDataModel { Name = brandModel.Name, Description = (brandModel.Description ?? string.Empty) });
+                    _brand_Data.SaveBrand(brandModel);
                     TempData[_tempKey] = $"Successfully Added new Brand: {brandModel.Name}";
                     return RedirectToAction("Index");
                 }
@@ -80,12 +83,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
         }
         public IActionResult BrandList()
         {
-            List<BrandModel> brandModelList = new List<BrandModel>();
-            var brandDataModelList = _brand_Data.GetAll();
-            foreach (var brand in brandDataModelList)
-            {
-                brandModelList.Add(new BrandModel { Id = brand.Id, Name = brand.Name, Description = brand.Description });
-            }
+            var brandModelList = _brand_Data.GetAll();
             return View(brandModelList);
         }
 
@@ -95,15 +93,18 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-
+        /// GeneralType
+        /// 
+        /// 
+        /// 
         [HttpGet]
         public IActionResult AddEditGeneralType(int? id)
         {
             if (id != null)
             {
                 ViewBag.AddEdit = "Edit";
-                var genTypeDataModel = _genType_Data.GetById((int)id);
-                return View(new GeneralTypeModel { Id = genTypeDataModel.Id, TypeName = genTypeDataModel.TypeName });
+                var genTypeModel = _genType_Data.GetById((int)id);
+                return View(genTypeModel);
             }
             else
             {
@@ -119,13 +120,13 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 if (generalTypeModel.Id != null)
                 {
-                    _genType_Data.Edit(new GeneralTypeDataModel { Id = generalTypeModel.Id, TypeName = generalTypeModel.TypeName });
+                    _genType_Data.Edit(generalTypeModel);
                     TempData[_tempKey] = $"Succesfully edited General Type: {generalTypeModel.TypeName.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    _genType_Data.Save(new GeneralTypeDataModel { TypeName = generalTypeModel.TypeName });
+                    _genType_Data.Save(generalTypeModel);
                     TempData[_tempKey] = $"Successfully added new General Type: {generalTypeModel.TypeName.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
@@ -138,13 +139,8 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
         public IActionResult GeneralTypeList()
         {
-            List<GeneralTypeModel> genTypeList = new List<GeneralTypeModel>();
-            var genTypeDataModelList = _genType_Data.GetAll();
-            genTypeDataModelList.ForEach(x =>
-            {
-                genTypeList.Add(new GeneralTypeModel { Id = x.Id, TypeName = x.TypeName });
-            });
-            return View(genTypeList);
+            var genTypeModelList = _genType_Data.GetAll();
+            return View(genTypeModelList);
         }
 
 
@@ -152,11 +148,24 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-
-
-        public IActionResult AddEditSubType()
+        /// SubType
+        /// 
+        /// 
+        /// 
+        [HttpGet]
+        public IActionResult AddEditSubType(int? id)
         {
-            return View();
+            IActionResult result = View();
+            if (id != null)
+            {
+
+                result = View();
+            }
+            else
+            {
+                ViewBag.GenList = _genType_Data.GetAll();
+            }
+            return result;
         }
 
 

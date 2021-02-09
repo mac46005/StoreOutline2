@@ -17,18 +17,18 @@ namespace DataManager.Library.DataAccess
             _sql = sql;
             _config = config;
         }
-        public void Save(GeneralTypeDataModel genType)
+        public void Save(GeneralTypeModel genType)
         {
             _sql.SaveData("dbo.spSaveGenType", new { typeName = genType.TypeName }, _config.GetSection("Data")[SO_DB_Key]);
         }
 
-        public List<GeneralTypeDataModel> GetAll()
+        public List<GeneralTypeModel> GetAll()
         {
-            var typeList = _sql.LoadData<GeneralTypeDataModel, dynamic>("dbo.spGetAllGenType", new { }, _config.GetSection("Data")[SO_DB_Key]);
+            var typeList = _sql.LoadData<GeneralTypeModel, dynamic>("dbo.spGetAllGenType", new { }, _config.GetSection("Data")[SO_DB_Key]);
             return typeList;
         }
 
-        public void Edit(GeneralTypeDataModel generalTypeDataModel)
+        public void Edit(GeneralTypeModel generalTypeDataModel)
         {
             _sql.SaveData("dbo.spEditGentype", generalTypeDataModel, _config.GetSection("Data")[SO_DB_Key]);
         }
@@ -38,9 +38,9 @@ namespace DataManager.Library.DataAccess
             _sql.SaveData("dbo.spDeleteGenType", new { id = id }, _config.GetSection("Data")[SO_DB_Key]);
         }
 
-        public GeneralTypeDataModel GetById(int id)
+        public GeneralTypeModel GetById(int id)
         {
-            var genTypeList = _sql.LoadData<GeneralTypeDataModel, dynamic>("dbo.spGetGenType_ById",new { id = id },_config.GetSection("Data")[SO_DB_Key]);
+            var genTypeList = _sql.LoadData<GeneralTypeModel, dynamic>("dbo.spGetGenType_ById",new { id = id },_config.GetSection("Data")[SO_DB_Key]);
             return genTypeList.Find(x => x.Id == id);
         }
     }

@@ -17,23 +17,23 @@ namespace DataManager.Library.DataAccess
             _configuration = configuration;
             _sql = sql;
         }
-        public void SaveBrand(BrandDataModel brandModel)
+        public void SaveBrand(BrandModel brandModel)
         {
             _sql.SaveData("dbo.spSaveBrandInfo", new { brandModel.Name,brandModel.Description }, _configuration.GetSection("Data")[SO_DB_Key]/*"SO_DataBase"*/);
         }
-        public List<BrandDataModel> GetAll()
+        public List<BrandModel> GetAll()
         {
-            var brandList = _sql.LoadData<BrandDataModel, dynamic>("dbo.spGetAllBrands", new { }, _configuration.GetSection("Data")[SO_DB_Key]);
+            var brandList = _sql.LoadData<BrandModel, dynamic>("dbo.spGetAllBrands", new { }, _configuration.GetSection("Data")[SO_DB_Key]);
             return brandList;
         }
 
-        public void EditBrand(BrandDataModel brandDataModel)
+        public void EditBrand(BrandModel brandDataModel)
         {
             _sql.SaveData("dbo.spEditBrand",brandDataModel,_configuration.GetSection("Data")[SO_DB_Key]);
         }
-        public BrandDataModel GetById(int id)
+        public BrandModel GetById(int id)
         {
-            var brandModelList= _sql.LoadData<BrandDataModel, dynamic>("dbo.spGetBrand_ById", new {id = id}, _configuration.GetSection("Data")[SO_DB_Key]);
+            var brandModelList= _sql.LoadData<BrandModel, dynamic>("dbo.spGetBrand_ById", new {id = id}, _configuration.GetSection("Data")[SO_DB_Key]);
             return brandModelList.Find(x => x.Id == id);
         }
 

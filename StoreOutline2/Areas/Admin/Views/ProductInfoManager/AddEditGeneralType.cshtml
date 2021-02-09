@@ -4,6 +4,7 @@
 {
     <h5>Currently Editing @ViewBag.BrandName</h5>
 }
+<div asp-validation-summary="All" class="alert-danger text-danger"></div>
 <form asp-action="AddEditGeneralType" method="post" class="mt-3">
     @if (Model != null)
     {
