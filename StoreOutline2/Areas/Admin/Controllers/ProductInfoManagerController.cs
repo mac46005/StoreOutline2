@@ -199,6 +199,11 @@ namespace StoreOutline2.Areas.Admin.Controllers
             return result;
         }
 
+        public IActionResult SubTypeList()
+        {
+            var subTypeList = _subType_Data.GetListOfSubWithGenAssociated();
+            return View(subTypeList);
+        }
 
 
 

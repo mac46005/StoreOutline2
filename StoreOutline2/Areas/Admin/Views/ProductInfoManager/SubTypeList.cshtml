@@ -1,4 +1,4 @@
-﻿@model List<SubTypeModel>
+﻿@model List<SubGenModel>
 <div class="jumbotron">
     <h1>Brands List</h1>
 </div>
@@ -29,9 +29,9 @@
                 {
                     <tr>
                         <td>@subType.SubTypeName</td>
-                        <td>@subType</td>
+                        <td>@subType.GeneralType</td>
                         <td class="col-1"><a asp-action="AddEditBrand" asp-route-id="@subType.Id" class="btn btn-secondary">Edit</a></td>
-                        <td class="col-1"><a asp-action="Delete" asp-route-category="Brand" asp-route-id="@subType.Id" asp-route-name="@subType.Name" class="btn btn-danger">Delete</a></td>
+                        <td class="col-1"><a asp-action="Delete" asp-route-category="Brand" asp-route-id="@subType.Id" asp-route-name="@subType.SubTypeName" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
             </tbody>

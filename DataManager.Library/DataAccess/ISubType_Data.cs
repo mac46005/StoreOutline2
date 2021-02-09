@@ -7,5 +7,6 @@ namespace DataManager.Library.DataAccess
 {
     public interface ISubType_Data : IManageData<SubTypeModel>
     {
+        List<SubGenModel> GetListOfSubWithGenAssociated();
     }
 }
