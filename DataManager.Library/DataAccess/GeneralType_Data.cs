@@ -43,5 +43,10 @@ namespace DataManager.Library.DataAccess
             var genTypeList = _sql.LoadData<GeneralTypeModel, dynamic>("dbo.spGetGenType_ById",new { id = id },_config.GetSection("Data")[DB_Key.SO_DB_Key()]);
             return genTypeList.Find(x => x.Id == id);
         }
+        public List<string> GetNames()
+        {
+            var nameList = _sql.LoadData<string, dynamic>("dbo.spGetGeneralTypeNames", new { }, _config.GetSection("Data")[DB_Key.SO_DB_Key()]);
+            return nameList;
+        }
     }
 }

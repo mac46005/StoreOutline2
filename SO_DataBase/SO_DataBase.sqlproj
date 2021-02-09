@@ -94,6 +94,9 @@
     <Build Include="dbo\Stored Procedures\spGetAllSubType.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteSubType.sql" />
     <Build Include="dbo\Stored Procedures\spEditSubType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetBrandNames.sql" />
+    <Build Include="dbo\Stored Procedures\spGetGeneralTypeNames.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSubTypeNames.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

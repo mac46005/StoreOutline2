@@ -49,5 +49,11 @@ namespace DataManager.Library.DataAccess
             var subGenList = _sql.LoadData<SubGenModel, dynamic>("dbo.spGetSubWithGenAssociated",new { },_config.GetSection("Data")[DB_Key.SO_DB_Key()]);
             return subGenList;
         }
+
+        public List<string> GetNames()
+        {
+            var nameList = _sql.LoadData<string, dynamic>("dbo.spGetSubTypeNames",new { },_config.GetSection("Data")[DB_Key.SO_DB_Key()]);
+            return nameList;
+        }
     }
 }
