@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataManager.Library.DataAccess
 {
-    interface ISubType_Data : IManageData<SubTypeModel>
+    public interface ISubType_Data : IManageData<SubTypeModel>
     {
     }
 }

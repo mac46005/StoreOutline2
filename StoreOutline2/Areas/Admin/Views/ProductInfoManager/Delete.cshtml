@@ -3,7 +3,7 @@
 <div asp-validation-summary="All" class="alert-danger text-danger"></div>
 <form class="form-group" asp-action="Delete">
     <h4 class="form-label">Are you sure you want to delete?</h4>
-    <label asp-for="@Model.Name"><h4>@Model.Name</h4></label>
+    <label asp-for="@Model.Name"><h4>@Model.Name</h4><input type="hidden" asp-for="@Model.Name" value="@Model.Name"/></label>
     <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
     <input type="hidden" asp-for="@Model.Category" value="@Model.Category" />
     <div class="container">

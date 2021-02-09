@@ -1,33 +1,39 @@
-﻿@model GeneralTypeModel
-<h1>@ViewBag.AddEdit General Type</h1>
-@if (ViewBag.BrandName != null)
+﻿@model SubTypeModel
+<h1>@ViewBag.AddEdit Sub Type</h1>
+@if (ViewBag.Name != null)
 {
-    <h5>Currently Editing @ViewBag.BrandName</h5>
+    <h5>Currently Editing @ViewBag.Name</h5>
 }
 <div asp-validation-summary="All" class="alert-danger text-danger"></div>
-<form asp-action="AddEditGeneralType" method="post" class="mt-3">
+<form asp-action="AddEditSubType" method="post" class="mt-3">
     @if (Model != null)
     {
         <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
     }
     <div class="form-group mb-3">
-        <label class="form-label">General Type Name:</label>
-        <input asp-for="@Model.TypeName" type="text" class="form-control" placeholder="e.g Makeup" />
+        <label class="form-label">SubType Name:</label>
+        <input asp-for="@Model.SubTypeName" type="text" class="form-control" placeholder="e.g LipStick" />
     </div>
+    @if (ViewBag.GenList.Count == 0)
+    {
+        <div class="alert-danger">
+            Must have General type to submit subtype.
+            <a asp-action="AddEditGeneralType" class="btn btn-primary">Create General Type</a>
+        </div>
+    }
+    else
+    {
+        <div class="mt-1">
+            <label class="form-label">Stem Type:</label>
+            <select asp-for="@Model.GeneralType_Id" class="dropdown">
+                @foreach (var genType in ViewBag.GenList)
+                {
+                    <option class="" value="@genType.Id">@genType.TypeName</option>
+                }
+            </select>
+        </div>
     <button class="btn btn-outline-primary">SUBMIT</button>
+    }
+
+    
 </form>
-
-
-
-
-
-<div class="mt-1">
-    <label class="form-label">Stem Type:</label>
-    <select class="dropdown">
-        <option class="dropdown-header">--Select Option--</option>
-        <option class="dropdown-item">Brand</option>
-        <option class="dropdown-item">Brand</option>
-        <option class="dropdown-item">Brand</option>
-        <option>Brand</option>
-    </select>
-</div>

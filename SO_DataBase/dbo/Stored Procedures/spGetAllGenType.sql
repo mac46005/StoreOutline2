@@ -2,6 +2,6 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT TypeName
+	SELECT Id,TypeName
 	FROM dbo.GeneralType;
 END

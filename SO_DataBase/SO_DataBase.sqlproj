@@ -90,7 +90,7 @@
     <Build Include="dbo\Stored Procedures\spGetGenType_ById.sql" />
     <Build Include="dbo\Stored Procedures\spSaveSubType.sql" />
     <Build Include="dbo\Stored Procedures\spGetSubType_ById.sql" />
-    <Build Include="dbo\Stored Procedures\spGetSubType_ByGeneralType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSubWithGenAssociated.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllSubType.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteSubType.sql" />
     <Build Include="dbo\Stored Procedures\spEditSubType.sql" />
