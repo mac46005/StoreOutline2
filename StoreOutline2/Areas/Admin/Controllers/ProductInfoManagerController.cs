@@ -218,7 +218,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             else if (deleteModel.Category == "GeneralType")
             {
                 _genType_Data.Delete(deleteModel.Id);
-                result = RedirectToAction("GeneraltypeList");
+                result = RedirectToAction("GeneralTypeList");
             }
             else
             {

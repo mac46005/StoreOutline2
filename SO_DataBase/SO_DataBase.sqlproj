@@ -93,6 +93,7 @@
     <Build Include="dbo\Stored Procedures\spGetSubType_ByGeneralType.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllSubType.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteSubType.sql" />
+    <Build Include="dbo\Stored Procedures\spEditSubType.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />
