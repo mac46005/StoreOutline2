@@ -50,7 +50,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 ViewBag.AddEdit = "Edit";
                 var brandModel = _brand_Data.GetById((int)id);
-                ViewBag.BrandName = brandModel.Name;
+                ViewBag.Name = brandModel.Name;
                 return View(brandModel);
             }
             else
@@ -107,6 +107,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 ViewBag.AddEdit = "Edit";
                 var genTypeModel = _genType_Data.GetById((int)id);
+                ViewBag.Name = genTypeModel.TypeName;
                 return View(genTypeModel);
             }
             else
@@ -162,8 +163,9 @@ namespace StoreOutline2.Areas.Admin.Controllers
             if (id != null)
             {
                 ViewBag.AddEdit = "Edit";
-                var subTyoe = _subType_Data.GetById((int)id);
-                result = View();
+                var subType = _subType_Data.GetById((int)id);
+                ViewBag.Name = subType.SubTypeName;
+                result = View(subType);
             }
             else
             {
@@ -194,6 +196,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             }
             else
             {
+                ViewBag.GenList = _genType_Data.GetAll();
                 result = View(subTypeModel);
             }
             return result;
@@ -254,6 +257,11 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 _genType_Data.Delete(deleteModel.Id);
                 result = RedirectToAction("GeneralTypeList");
+            }
+            else if (deleteModel.Category == "SubType")
+            {
+                _subType_Data.Delete(deleteModel.Id);
+                result = RedirectToAction("SubTypeList");
             }
             else
             {

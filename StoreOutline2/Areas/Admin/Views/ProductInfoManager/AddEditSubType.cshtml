@@ -14,26 +14,34 @@
         <label class="form-label">SubType Name:</label>
         <input asp-for="@Model.SubTypeName" type="text" class="form-control" placeholder="e.g LipStick" />
     </div>
-    @if (ViewBag.GenList.Count == 0)
+    @if (ViewBag.GenList == null)
     {
-        <div class="alert-danger">
-            Must have General type to submit subtype.
-            <a asp-action="AddEditGeneralType" class="btn btn-primary">Create General Type</a>
-        </div>
+
     }
     else
     {
-        <div class="mt-1">
-            <label class="form-label">Stem Type:</label>
-            <select asp-for="@Model.GeneralType_Id" class="dropdown">
-                @foreach (var genType in ViewBag.GenList)
-                {
-                    <option class="" value="@genType.Id">@genType.TypeName</option>
-                }
-            </select>
-        </div>
-    <button class="btn btn-outline-primary">SUBMIT</button>
+        @if (ViewBag.GenList.Count == 0)
+        {
+            <div class="alert-danger">
+                Must have General type to submit subtype.
+                <a asp-action="AddEditGeneralType" class="btn btn-primary">Create General Type</a>
+            </div>
+        }
+        else
+        {
+            <div class="mt-1">
+                <label class="form-label">Stem Type:</label>
+                <select asp-for="@Model.GeneralType_Id" class="dropdown">
+                    @foreach (var genType in ViewBag.GenList)
+                    {
+                        <option class="" value="@genType.Id">@genType.TypeName</option>
+                    }
+                </select>
+            </div>
+            <button class="btn btn-outline-primary">SUBMIT</button>
+        }
     }
 
-    
+
+
 </form>
