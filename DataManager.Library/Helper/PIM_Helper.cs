@@ -19,5 +19,14 @@ namespace DataManager.Library.Helper
         internal static List<string> ListOfBrandsNames() => _brand_Data.GetNames();
         internal static List<string> ListOfGeneralTypeNames() => _generalType_Data.GetNames();
         internal static List<string> ListOfSubTypeNames() => _subType_Data.GetNames();
+        internal static List<string> ListOfAll_SubGenBrand_Names()
+        {
+            List<string> list = new List<string>();
+            list.AddRange(ListOfBrandsNames());
+            list.AddRange(ListOfSubTypeNames());
+            list.AddRange(ListOfGeneralTypeNames());
+
+            return list;
+        }
     }
 }

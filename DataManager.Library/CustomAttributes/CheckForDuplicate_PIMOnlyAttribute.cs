@@ -1,16 +1,13 @@
-﻿using System;
+﻿using DataManager.Library.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace DataManager.Library.CustomAttributes
 {
-    public class CheckForDuplicateAttribute : ValidationAttribute
+    public class CheckForDuplicate_PIMOnlyAttribute : ValidationAttribute
     {
-        public List<string> ListOfValues { get; set; } = new List<string>();
-        public CheckForDuplicateAttribute()
-        {
-        }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             ValidationResult result = ValidationResult.Success;
@@ -18,7 +15,7 @@ namespace DataManager.Library.CustomAttributes
             bool isDuplicate = false;
             string duplicateValue = "";
             string valueToCheck = ((string)value).Trim().ToLower();
-            foreach (var item in ListOfValues)
+            foreach (var item in PIM_Helper.ListOfAll_SubGenBrand_Names())
             {
                 if (valueToCheck == item.Trim().ToLower())
                 {

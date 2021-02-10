@@ -11,7 +11,7 @@ namespace DataManager.Library.Models
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Enter Brand Name.")]
-        [CheckForDuplicate(PIM_Helper.ListOfBrandsNames())]
+        [CheckForDuplicate_PIMOnly]
         public string Name { get; set; }
         public string Description { get; set; }
     }
