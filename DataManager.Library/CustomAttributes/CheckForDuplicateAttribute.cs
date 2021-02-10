@@ -7,10 +7,9 @@ namespace DataManager.Library.CustomAttributes
 {
     public class CheckForDuplicateAttribute : ValidationAttribute
     {
-        private List<string> _listOfValues;
-        public CheckForDuplicateAttribute(List<string> listOfValues)
+        public List<string> ListOfValues { get; set; } = new List<string>();
+        public CheckForDuplicateAttribute()
         {
-            _listOfValues = listOfValues;
         }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -19,7 +18,7 @@ namespace DataManager.Library.CustomAttributes
             bool isDuplicate = false;
             string duplicateValue = "";
             string valueToCheck = ((string)value).Trim().ToLower();
-            foreach (var item in _listOfValues)
+            foreach (var item in ListOfValues)
             {
                 if (valueToCheck == item.Trim().ToLower())
                 {
