@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataManager.Library.DataAccess;
+using DataManager.Library.Helper;
 using DataManager.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,13 +20,16 @@ namespace StoreOutline2.Areas.Admin.Controllers
         private IBrand_Data _brand_Data;
         private IGeneralType_Data _genType_Data;
         private ISubType_Data _subType_Data;
+        private IPIM_Helper _pim_Helper;
         public ProductInfoManagerController(IConfiguration config,
-            IBrand_Data brand_Data, IGeneralType_Data genTypeData, ISubType_Data subType_Data)
+            IBrand_Data brand_Data, IGeneralType_Data genTypeData, ISubType_Data subType_Data,
+            IPIM_Helper pim_Helper)
         {
             _config = config;
             _brand_Data = brand_Data;
             _genType_Data = genTypeData;
             _subType_Data = subType_Data;
+            _pim_Helper = pim_Helper;
         }
         public IActionResult Index()
         {
@@ -37,7 +41,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-
+        string duplicateErrorMessage = "This value already exists in the database: ";
 
         /// Brand
         /// 
@@ -65,15 +69,20 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Contains(brandModel.Name))
+                {
+                    ModelState.AddModelError("",duplicateErrorMessage + brandModel.Name);
+                    return View(brandModel);
+                }
                 if (brandModel.Id != null)
                 {
-                    _brand_Data.EditBrand(brandModel);
+                    _brand_Data.Edit(brandModel);
                     TempData[_tempKey] = $"Succesfully edited Brand: {brandModel.Name.ToUpper()}";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    _brand_Data.SaveBrand(brandModel);
+                    _brand_Data.Save(brandModel);
                     TempData[_tempKey] = $"Successfully Added new Brand: {brandModel.Name}";
                     return RedirectToAction("Index");
                 }
@@ -122,6 +131,11 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Contains(generalTypeModel.TypeName))
+                {
+                    ModelState.AddModelError("", duplicateErrorMessage + generalTypeModel.TypeName);
+                    return View(generalTypeModel);
+                }
                 if (generalTypeModel.Id != null)
                 {
                     _genType_Data.Edit(generalTypeModel);
@@ -181,6 +195,11 @@ namespace StoreOutline2.Areas.Admin.Controllers
             IActionResult result = View();
             if (ModelState.IsValid)
             {
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Contains(subTypeModel.SubTypeName))
+                {
+                    ModelState.AddModelError("", duplicateErrorMessage + subTypeModel.SubTypeName);
+                    result = View(subTypeModel);
+                }
                 if (subTypeModel.Id != null)
                 {
                     _subType_Data.Edit(subTypeModel);

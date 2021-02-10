@@ -97,6 +97,7 @@
     <Build Include="dbo\Stored Procedures\spGetBrandNames.sql" />
     <Build Include="dbo\Stored Procedures\spGetGeneralTypeNames.sql" />
     <Build Include="dbo\Stored Procedures\spGetSubTypeNames.sql" />
+    <Build Include="dbo\Stored Procedures\spPIMOnly_GetALLBrandSubGenNames.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

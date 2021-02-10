@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DataManager.Library.Intertnal;
 using DataManager.Library.DataAccess;
+using DataManager.Library.Helper;
 
 namespace StoreOutline2
 {
@@ -44,6 +45,8 @@ namespace StoreOutline2
             services.AddTransient<IGeneralType_Data, GeneralType_Data>();
             services.AddTransient<IBrand_Data, Brand_Data>();
             services.AddTransient<ISubType_Data, SubType_Data>();
+            services.AddTransient<IPIM_Helper, PIM_Helper>();
+            //services.AddSingleton<PIM_Helper>();
 
         }
 

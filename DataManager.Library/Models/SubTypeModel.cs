@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataManager.Library.CustomAttributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;

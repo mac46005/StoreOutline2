@@ -1,32 +1,38 @@
 ﻿using DataManager.Library.DataAccess;
+using DataManager.Library.Intertnal;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataManager.Library.Helper
 {
-    public class PIM_Helper
+    public class PIM_Helper : IPIM_Helper
     {
-        private static  IBrand_Data _brand_Data;
-        private static IGeneralType_Data _generalType_Data;
-        private static ISubType_Data _subType_Data;
-        public PIM_Helper(IBrand_Data brand_Data,IGeneralType_Data generalType_Data,ISubType_Data subType_Data)
+        private IConfiguration _config;
+        private ISqlDataAccess _sql;
+        public PIM_Helper(IConfiguration config, ISqlDataAccess sql)
         {
-            _brand_Data = brand_Data;
-            _generalType_Data = generalType_Data;
-            _subType_Data = subType_Data;
+            _config = config;
+            _sql = sql;
         }
-        internal static List<string> ListOfBrandsNames() => _brand_Data.GetNames();
-        internal static List<string> ListOfGeneralTypeNames() => _generalType_Data.GetNames();
-        internal static List<string> ListOfSubTypeNames() => _subType_Data.GetNames();
-        internal static List<string> ListOfAll_SubGenBrand_Names()
+        public List<string> PIMOnly_GetAllBrandGenSubNames()
         {
-            List<string> list = new List<string>();
-            list.AddRange(ListOfBrandsNames());
-            list.AddRange(ListOfSubTypeNames());
-            list.AddRange(ListOfGeneralTypeNames());
+            var stringList = _sql.LoadData<string, dynamic>("spPIMOnly_GetALLBrandSubGenNames", new { }, _config.GetSection("Data")[DB_Key.SO_DB_Key()]);
+            return stringList;
+        }
 
-            return list;
-        }
+        //public bool CheckForDuplicate(List<string> list,string value)
+        //{
+        //    bool isDuplicate = false;
+        //    foreach (var item in list)
+        //    {
+        //        if (value == item)
+        //        {
+        //            isDuplicate = true;
+        //        }
+        //    }
+        //    return isDuplicate;
+        //}
     }
 }
