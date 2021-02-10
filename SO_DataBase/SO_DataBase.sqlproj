@@ -102,4 +102,7 @@
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="SO_DataBase.refactorlog" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Add new Product";
+}
+
+<partial name="_NavManageProductsPartial" />
+<h1>@ViewData["Title"]</h1>
+<form>
+    <!--BRAND LIST-->
+    <h4 class="mt-3">Brand</h4>
+    <div class="input-group mt-1">
+        <select class="form-select">
+            <option>Option1</option>
+            <option>Option2</option>
+            <option>Option3</option>
+        </select>
+        <div class="input-group">
+            <div class="input-group-text">
+                <input class="form-check-input"
+                       type="checkbox" aria-label="New Brand CheckBox" />
+                <label>New Brand</label>
+            </div>
+            <input type="text" class="form-control" aria-label="Enter Brand here" />
+        </div>
+    </div>
+
+    <!--GENTYPE LIST-->
+    <h4 class="mt-3">GeneralType</h4>
+    <div class="input-group mt-1">
+        <select class="form-select">
+            <option>Option1</option>
+            <option>Option2</option>
+            <option>Option3</option>
+        </select>
+        <div class="input-group">
+            <div class="input-group-text">
+                <input class="form-check-input"
+                       type="checkbox" aria-label="New Brand CheckBox" />
+                <label>New GeneralType</label>
+            </div>
+            <input type="text" class="form-control" aria-label="Enter GeneraType here" />
+        </div>
+    </div>
+
+    <!--SUBTYPE LIST-->
+    <h4 class="mt-3">SubType</h4>
+    <div class="input-group mt-1">
+        <select class="form-select">
+            <option>Option1</option>
+            <option>Option2</option>
+            <option>Option3</option>
+        </select>
+        <div class="input-group">
+            <div class="input-group-text">
+                <input class="form-check-input"
+                       type="checkbox" aria-label="New SubType CheckBox" />
+                <label>New SubType</label>
+            </div>
+            <input type="text" class="form-control" aria-label="Enter Brand here" />
+        </div>
+    </div>
+    <a class="btn btn-primary">To General Details</a>
+</form>

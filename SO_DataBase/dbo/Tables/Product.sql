@@ -1,13 +1,14 @@
 ﻿CREATE TABLE [dbo].[Product]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [ProductName] NVARCHAR(128) NOT NULL, 
-    [GeneralDetails_Id] INT NOT NULL, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [ProductName] NVARCHAR(128) NOT NULL,
+    [Product_SerialNumber] nvarchar(128),
+    [GeneralDetails_Id] INT NULL, 
     [RetailPrice] MONEY NOT NULL, 
-    [Tax_Id] INT NOT NULL, 
-    [QuantityStock] INT NOT NULL DEFAULT 0, 
-    [IsAvailable] BIT NOT NULL, 
-    [CreateDate] DATETIME2 NOT NULL, 
+    [Tax_Id] INT NULL, 
+    [QuantityStock] INT NULL DEFAULT 0, 
+    [IsAvailable] BIT NULL, 
+    [CreateDate] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 
     [LastModified] DATETIME2 NOT NULL, 
     CONSTRAINT [FK_Product_ToGeneralDetails] FOREIGN KEY ([GeneralDetails_Id]) REFERENCES [GeneralDetails]([Id]), 
 )

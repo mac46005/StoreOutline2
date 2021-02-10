@@ -19,5 +19,10 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult GeneralDetails()
+        {
+            return View();
+        }
     }
 }

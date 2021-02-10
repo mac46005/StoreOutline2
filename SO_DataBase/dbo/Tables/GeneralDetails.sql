@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[GeneralDetails]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Brand_Id] INT NOT NULL, 
     [GeneralType_Id] INT NOT NULL, 
     [SubType_Id] INT NOT NULL, 

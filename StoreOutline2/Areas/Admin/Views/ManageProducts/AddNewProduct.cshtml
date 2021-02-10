@@ -17,6 +17,10 @@ CERATE control group for SUB Type
         <input type="text" class="form-control" placeholder="Product name" />
     </div>
     <div class="input-group">
+        <span class="input-group-text">Serial Number</span>
+        <input type="text" class="form-control" placeholder="Product name" />
+    </div>
+    <div class="input-group">
         <span class="input-group-text">Retale Price</span>
         <input type="number" class="form-control" placeholder="Retail Price" />
     </div>
@@ -24,7 +28,7 @@ CERATE control group for SUB Type
         <span class="input-group-text">Tax Type</span>
         <input type="text" class="form-control" placeholder="Tax Type" />
     </div>
-    <div class="input-group">
+    @*<div class="input-group">
         <select class="form-select">
             <option>Option1</option>
             <option>Option2</option>
@@ -38,5 +42,6 @@ CERATE control group for SUB Type
             </div>
             <input type="text" class="form-control" aria-label="Enter Brand here" />
         </div>
-    </div>
+    </div>*@
+    <a asp-action="GeneralDetails" class="btn btn-primary">To General Details</a>
 </form>
