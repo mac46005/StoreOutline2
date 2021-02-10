@@ -69,16 +69,16 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Contains(brandModel.Name))
-                {
-                    ModelState.AddModelError("",duplicateErrorMessage + brandModel.Name);
-                    return View(brandModel);
-                }
                 if (brandModel.Id != null)
                 {
                     _brand_Data.Edit(brandModel);
                     TempData[_tempKey] = $"Succesfully edited Brand: {brandModel.Name.ToUpper()}";
                     return RedirectToAction("Index");
+                }
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == brandModel.Name.ToUpper()))
+                {
+                    ModelState.AddModelError("",duplicateErrorMessage + brandModel.Name);
+                    return View(brandModel);
                 }
                 else
                 {
@@ -131,16 +131,16 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Contains(generalTypeModel.TypeName))
-                {
-                    ModelState.AddModelError("", duplicateErrorMessage + generalTypeModel.TypeName);
-                    return View(generalTypeModel);
-                }
                 if (generalTypeModel.Id != null)
                 {
                     _genType_Data.Edit(generalTypeModel);
                     TempData[_tempKey] = $"Succesfully edited General Type: {generalTypeModel.TypeName.ToUpper()}.";
                     return RedirectToAction("Index");
+                }
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == generalTypeModel.TypeName.ToUpper()))
+                {
+                    ModelState.AddModelError("", duplicateErrorMessage + generalTypeModel.TypeName);
+                    return View(generalTypeModel);
                 }
                 else
                 {
@@ -195,16 +195,16 @@ namespace StoreOutline2.Areas.Admin.Controllers
             IActionResult result = View();
             if (ModelState.IsValid)
             {
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Contains(subTypeModel.SubTypeName))
-                {
-                    ModelState.AddModelError("", duplicateErrorMessage + subTypeModel.SubTypeName);
-                    result = View(subTypeModel);
-                }
                 if (subTypeModel.Id != null)
                 {
                     _subType_Data.Edit(subTypeModel);
                     TempData[_tempKey] = $"Successfully edited Sub Type: {subTypeModel.SubTypeName}";
                     result = RedirectToAction("SubType_List");
+                }
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == subTypeModel.SubTypeName.ToUpper()))
+                {
+                    ModelState.AddModelError("", duplicateErrorMessage + subTypeModel.SubTypeName);
+                    result = View(subTypeModel);
                 }
                 else
                 {
@@ -215,9 +215,10 @@ namespace StoreOutline2.Areas.Admin.Controllers
             }
             else
             {
-                ViewBag.GenList = _genType_Data.GetAll();
+                
                 result = View(subTypeModel);
             }
+            ViewBag.GenList = _genType_Data.GetAll();
             return result;
         }
 

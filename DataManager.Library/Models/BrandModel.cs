@@ -1,4 +1,4 @@
-﻿using DataManager.Library.CustomAttributes;
+﻿
 using DataManager.Library.Helper;
 using System;
 using System.Collections.Generic;
@@ -11,8 +11,14 @@ namespace DataManager.Library.Models
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Enter Brand Name.")]
-        //[CheckForDuplicate_PIMOnly(_pim_Helper)]
-        public string Name { get; set; }
+        private string name;
+        public string Name 
+        { get { return name; } 
+            set 
+            {
+                name = value.Trim();
+            } 
+        }
         public string Description { get; set; }
     }
 }

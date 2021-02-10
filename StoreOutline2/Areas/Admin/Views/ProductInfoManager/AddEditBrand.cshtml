@@ -3,7 +3,7 @@
 <h1>@ViewBag.AddEdit Brand</h1>
 @if (ViewBag.Name != null)
 {
-    <h5>Currently Editing @ViewBag.BrandName</h5>
+    <h5>Currently Editing @ViewBag.Name</h5>
 }
 <div asp-validation-summary="All" class="alert-danger text-danger"></div>
 <form asp-action="AddEditBrand" class="mt-3" method="post">

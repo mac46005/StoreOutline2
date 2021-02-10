@@ -1,4 +1,4 @@
-﻿using DataManager.Library.CustomAttributes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +10,14 @@ namespace DataManager.Library.Models
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Please enter a valid general type name.")]
-        public string TypeName { get; set; }
+        private string _typeName;
+        public string TypeName
+        {
+            get{ return _typeName; }
+            set
+            {
+                _typeName = value.Trim();
+            }
+        }
     }
 }
