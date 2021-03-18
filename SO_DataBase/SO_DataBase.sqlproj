@@ -63,7 +63,7 @@
     <Folder Include="PublishLocation" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Product.sql" />
+    <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\GeneralDetails.sql" />
     <Build Include="dbo\Tables\BrandDetail.sql" />
     <Build Include="dbo\Tables\GeneralType.sql" />
@@ -99,6 +99,8 @@
     <Build Include="dbo\Stored Procedures\spGetSubTypeNames.sql" />
     <Build Include="dbo\Stored Procedures\spPIMOnly_GetALLBrandSubGenNames.sql" />
     <Build Include="dbo\Stored Procedures\spSaveProduct.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteProduct.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllProducts.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

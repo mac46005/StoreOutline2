@@ -11,7 +11,7 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	INSERT INTO Product(
+	INSERT INTO [Products](
 	ProductName,Product_SerialNumber,
 	GeneralDetails_Id,RetailPrice,
 	Tax_Id,QuantityStock,IsAvailable,
