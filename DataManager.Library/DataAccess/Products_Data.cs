@@ -1,4 +1,5 @@
-﻿using DataManager.Library.Intertnal;
+﻿using DataManager.Library.Helper;
+using DataManager.Library.Intertnal;
 using DataManager.Library.Models;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace DataManager.Library.DataAccess
 {
-    public class Products_Data : IProduct_Data
+    public class Products_Data : IProducts_Data
     {
         private readonly IConfiguration _config;
         private ISqlDataAccess _sql;
@@ -19,22 +20,22 @@ namespace DataManager.Library.DataAccess
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _sql.SaveData("dbo.DeleteProduct",id,_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public void Edit(ProductModel type)
         {
-            throw new NotImplementedException();
+            _sql.SaveData("dbo.EditProduct",type,_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public List<ProductModel> GetAll()
         {
-            throw new NotImplementedException();
+            return _sql.LoadData<ProductModel,dynamic>("dbo.GetAllProducts",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public ProductModel GetById(int id)
         {
-            throw new NotImplementedException();
+            return _sql.LoadData<ProductModel, int>("dbo.GetProducts_ById",id,_config.GetSection("Data")[Settings.SO_DB_Key()]).Find(x => x.Id == id);
         }
 
         public List<string> GetNames()
@@ -42,9 +43,9 @@ namespace DataManager.Library.DataAccess
             throw new NotImplementedException();
         }
 
-        public void Save(ProductModel type)
+        public void Save(ProductModel model)
         {
-            throw new NotImplementedException();
+            _sql.SaveData("dbo.spSaveProduct",model,_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
     }
 }

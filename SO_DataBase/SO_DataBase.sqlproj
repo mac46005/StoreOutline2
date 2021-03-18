@@ -101,6 +101,8 @@
     <Build Include="dbo\Stored Procedures\spSaveProduct.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteProduct.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllProducts.sql" />
+    <Build Include="dbo\Stored Procedures\spEditProduct.sql" />
+    <Build Include="dbo\Stored Procedures\spGetProduct_ById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />
