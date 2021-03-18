@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ProductModel
+@{
     ViewData["Title"] = "Add new Product";
 }
 
@@ -11,22 +12,22 @@ Create control group for GEN TYPE
 CERATE control group for SUB Type
 -->
 
-<form>
+<form asp-action="AddNewProduct" method="post">
     <div class="input-group">
         <span class="input-group-text">Product Name</span>
-        <input type="text" class="form-control" placeholder="Product name" />
+        <input asp-for="@Model.ProductName" type="text" class="form-control" placeholder="Product name" />
     </div>
     <div class="input-group">
         <span class="input-group-text">Serial Number</span>
-        <input type="text" class="form-control" placeholder="Product name" />
+        <input asp-for="@Model.SerialNumber" type="text" class="form-control" placeholder="Serial Number" />
     </div>
     <div class="input-group">
         <span class="input-group-text">Retale Price</span>
-        <input type="number" class="form-control" placeholder="Retail Price" />
+        <input asp-for="@Model.RetailPrice" type="number" class="form-control" placeholder="Retail Price" />
     </div>
     <div class="input-group">
         <span class="input-group-text">Tax Type</span>
-        <input type="text" class="form-control" placeholder="Tax Type" />
+        <input asp-for="@Model.Tax_Id" type="text" class="form-control" placeholder="Tax Type" />
     </div>
     @*<div class="input-group">
         <select class="form-select">
@@ -43,5 +44,5 @@ CERATE control group for SUB Type
             <input type="text" class="form-control" aria-label="Enter Brand here" />
         </div>
     </div>*@
-    <a asp-action="GeneralDetails" class="btn btn-primary">To General Details</a>
+    <button type="submit" class="btn btn-outline-primary">Next</button>
 </form>

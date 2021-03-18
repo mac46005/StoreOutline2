@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataManager.Library.DataAccess
 {
-    interface IProducts_Data : IManageData<ProductModel>
+    public interface IProducts_Data : IManageData<ProductModel>
     {
     }
 }

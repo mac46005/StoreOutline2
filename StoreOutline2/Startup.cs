@@ -46,6 +46,7 @@ namespace StoreOutline2
             services.AddTransient<IBrand_Data, Brand_Data>();
             services.AddTransient<ISubType_Data, SubType_Data>();
             services.AddTransient<IPIM_Helper, PIM_Helper>();
+            services.AddTransient<IProducts_Data, Products_Data>();
             //services.AddSingleton<PIM_Helper>();
 
         }
