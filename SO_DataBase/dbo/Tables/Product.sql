@@ -5,7 +5,7 @@
     [Product_SerialNumber] nvarchar(128),
     [GeneralDetails_Id] INT NULL, 
     [RetailPrice] MONEY NOT NULL, 
-    [Tax_Id] INT NULL, 
+    [Tax_Id] INT NOT NULL, 
     [QuantityStock] INT NULL DEFAULT 0, 
     [IsAvailable] BIT NULL, 
     [CreateDate] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 

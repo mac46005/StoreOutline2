@@ -10,6 +10,15 @@ namespace StoreOutline2.Areas.Admin.Controllers
     [Route("[area]/[controller]/[action]")]
     public class ManageProductsController : Controller
     {
+
+
+
+        public ManageProductsController()
+        {
+
+        }
+
+
         public IActionResult Index()
         {
             return View();
