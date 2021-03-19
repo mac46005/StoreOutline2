@@ -46,8 +46,8 @@ namespace StoreOutline2.Areas.Admin.Controllers
         public IActionResult GeneralDetails(ProductModel model)
         {
             ViewBag.GenData = _gen_Data.GetAll();
-            ViewData["SubData"] = _sub_Data.GetAll();
-            ViewData["BrandData"] = _brand_Data.GetAll();
+            ViewBag.SubData = _sub_Data.GetAll();
+            ViewBag.BrandData = _brand_Data.GetAll();
             return View();
         }
         //public IActionResult GeneralDetails()

@@ -9,11 +9,21 @@
     <h4 class="mt-3">Brand</h4>
     <div class="input-group mt-1">
         <select class="form-select">
-            @{ 
-                foreach (var i in ViewBag.GenData)
+            @{
+
+                if (ViewBag.GenData.Count <= 0)
                 {
-                    <option value="@i.Id">@i.TypeName</option>
+
+                    <option type="text" value="No Data">No Data</option>
                 }
+                else
+                {
+                    foreach (var i in ViewBag.GenData)
+                    {
+                        <option value="@i.Id">@i.TypeName</option>
+                    }
+                }
+
             }
         </select>
         <div class="input-group">
