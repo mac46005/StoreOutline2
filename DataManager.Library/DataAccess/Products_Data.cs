@@ -43,6 +43,11 @@ namespace DataManager.Library.DataAccess
             throw new NotImplementedException();
         }
 
+        public List<ProductModel> GetTop(int x)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(ProductModel model)
         {
             _sql.SaveData("dbo.spSaveProduct",model,_config.GetSection("Data")[Settings.SO_DB_Key()]);

@@ -46,5 +46,10 @@ namespace DataManager.Library.DataAccess
             var nameList = _sql.LoadData<string, dynamic>("dbo.spGetBrandNames", new { }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
             return nameList;
         }
+
+        public List<BrandModel> GetTop(int x)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

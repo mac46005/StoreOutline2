@@ -54,9 +54,18 @@ namespace StoreOutline2.Areas.Admin.Controllers
             return View(vm);
         }
         [HttpPost]
-        public IActionResult GeneralDetails()
+        public IActionResult GeneralDetails(GeneralProductViewModel model)
         {
-
+            ProductModel productModel = new ProductModel();
+            productModel.ProductName = model.Product.ProductName;
+            productModel.SerialNumber = model.Product.SerialNumber;
+            productModel.Gen_Id = model.Product.Gen_Id;
+            productModel.RetailPrice = model.Product.RetailPrice;
+            productModel.Tax_Id = model.Product.Tax_Id;
+            productModel.QuantityStock = model.Product.QuantityStock;
+            productModel.IsAvailable = model.Product.IsAvailable;
+            productModel.CreateDate = model.Product.CreateDate;
+            productModel.LastModified = model.Product.LastModified;
             //  DO SOMETHING...........
             //  I LOVE KAT :)
 

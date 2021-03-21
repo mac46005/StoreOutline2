@@ -12,5 +12,6 @@ namespace DataManager.Library.DataAccess
         void Save(T type);
         T GetById(int id);
         List<string> GetNames();
+        List<T> GetTop(int x);
     }
 }

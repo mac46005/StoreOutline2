@@ -55,5 +55,10 @@ namespace DataManager.Library.DataAccess
             var nameList = _sql.LoadData<string, dynamic>("dbo.spGetSubTypeNames",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
             return nameList;
         }
+
+        public List<SubTypeModel> GetTop(int x)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -48,5 +48,10 @@ namespace DataManager.Library.DataAccess
             var nameList = _sql.LoadData<string, dynamic>("dbo.spGetGeneralTypeNames", new { }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
             return nameList;
         }
+
+        public List<GeneralTypeModel> GetTop(int x)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
