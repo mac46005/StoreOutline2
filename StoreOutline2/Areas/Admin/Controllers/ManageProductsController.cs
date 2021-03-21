@@ -1,6 +1,7 @@
 ﻿using DataManager.Library.DataAccess;
 using DataManager.Library.Models;
 using Microsoft.AspNetCore.Mvc;
+using StoreOutline2.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,12 +49,19 @@ namespace StoreOutline2.Areas.Admin.Controllers
             ViewBag.GenData = _gen_Data.GetAll();
             ViewBag.SubData = _sub_Data.GetAll();
             ViewBag.BrandData = _brand_Data.GetAll();
-            return View();
+            GeneralProductViewModel vm = new GeneralProductViewModel();
+            vm.Product = model;
+            return View(vm);
         }
-        //public IActionResult GeneralDetails()
-        //{
+        [HttpPost]
+        public IActionResult GeneralDetails()
+        {
 
-        //}
+            //  DO SOMETHING...........
+            //  I LOVE KAT :)
+
+            return RedirectToAction();
+        }
 
     }
 }

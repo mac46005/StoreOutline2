@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreOutline2.Areas.Admin.Models
 {
-    public class GeneralProductDetailsViewModel
+    public class GeneralProductViewModel
     {
         public ProductModel Product { get; set; }
         public GeneralDetailsModel GenDetails { get; set; }
