@@ -1,0 +1,21 @@
+﻿@model ProductModel
+
+@{ 
+    ViewData["Title"] = "Review and Submit";
+}
+
+
+<div class="container">
+    @{ 
+        var props = Model.GetType().GetProperties();
+        foreach (var p in props)
+        {
+            <div>
+                @p.Name : @p.GetValue(Model)
+            </div>
+        }
+    }
+</div>
+
+
+

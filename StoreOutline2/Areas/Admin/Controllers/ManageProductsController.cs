@@ -13,19 +13,21 @@ namespace StoreOutline2.Areas.Admin.Controllers
     [Route("[area]/[controller]/[action]")]
     public class ManageProductsController : Controller
     {
-
+        IGeneralDetails_Data _genDetails_Data;
         IProducts_Data _products_Data;
         IBrand_Data _brand_Data;
         IGeneralType_Data _gen_Data;
         ISubType_Data _sub_Data;
 
         public ManageProductsController(IProducts_Data products_Data
-            ,IBrand_Data brand_Data,IGeneralType_Data generalType_Data,ISubType_Data subType_Data)
+            ,IBrand_Data brand_Data,IGeneralType_Data generalType_Data,ISubType_Data subType_Data,
+            IGeneralDetails_Data genDetails_Data)
         {
             _products_Data = products_Data;
             _brand_Data = brand_Data;
             _gen_Data = generalType_Data;
             _sub_Data = subType_Data;
+            _genDetails_Data = genDetails_Data;
         }
 
 
@@ -41,6 +43,8 @@ namespace StoreOutline2.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddNewProduct(ProductModel model)
         {
+            model.CreateDate = DateTime.Now;
+            model.LastModified = DateTime.Now;
             return RedirectToAction(nameof(GeneralDetails),model);
         }
         [HttpGet]
@@ -56,20 +60,47 @@ namespace StoreOutline2.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult GeneralDetails(GeneralProductViewModel model)
         {
-            ProductModel productModel = new ProductModel();
-            productModel.ProductName = model.Product.ProductName;
-            productModel.SerialNumber = model.Product.SerialNumber;
-            productModel.Gen_Id = model.Product.Gen_Id;
-            productModel.RetailPrice = model.Product.RetailPrice;
-            productModel.Tax_Id = model.Product.Tax_Id;
-            productModel.QuantityStock = model.Product.QuantityStock;
-            productModel.IsAvailable = model.Product.IsAvailable;
-            productModel.CreateDate = model.Product.CreateDate;
-            productModel.LastModified = model.Product.LastModified;
+            _genDetails_Data.Save(model.GenDetails);
+            var currentGenDetailsList = _genDetails_Data.GetTop(1);
+
+
+            //ProductModel productModel = new ProductModel();
+            //productModel.ProductName = model.Product.ProductName;
+            //productModel.SerialNumber = model.Product.SerialNumber;
+            //productModel.Gen_Id = model.Product.Gen_Id;
+            //productModel.RetailPrice = model.Product.RetailPrice;
+            //productModel.Tax_Id = model.Product.Tax_Id;
+            //productModel.QuantityStock = model.Product.QuantityStock;
+            //productModel.IsAvailable = model.Product.IsAvailable;
+            //productModel.CreateDate = model.Product.CreateDate;
+            //productModel.LastModified = model.Product.LastModified;
+            model.Product.Gen_Id = currentGenDetailsList[0].Id;
             //  DO SOMETHING...........
             //  I LOVE KAT :)
 
-            return RedirectToAction();
+            return RedirectToAction("ReviewSubmit",model.Product);
+        }
+
+
+        public IActionResult ReviewSubmit(ProductModel model)
+        {
+
+
+
+
+            return View(model);
+        }
+        public IActionResult ReviewSubmit(ProductModel model,bool IsNew = true)
+        {
+            if (IsNew)
+            {
+                _products_Data.Save(model);
+                return RedirectToAction("");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
     }

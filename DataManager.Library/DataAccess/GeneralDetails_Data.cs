@@ -13,6 +13,11 @@ namespace DataManager.Library.DataAccess
 
         private readonly IConfiguration _config;
         private ISqlDataAccess _sql;
+        public GeneralDetails_Data(IConfiguration config, ISqlDataAccess sql)
+        {
+            _config = config;
+            _sql = sql;
+        }
 
         public void Delete(int id)
         {
