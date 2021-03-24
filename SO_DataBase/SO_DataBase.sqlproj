@@ -103,6 +103,12 @@
     <Build Include="dbo\Stored Procedures\spGetAllProducts.sql" />
     <Build Include="dbo\Stored Procedures\spEditProduct.sql" />
     <Build Include="dbo\Stored Procedures\spGetProduct_ById.sql" />
+    <Build Include="dbo\Stored Procedures\spGenDetail_GetTop.sql" />
+    <Build Include="dbo\Stored Procedures\spSaveGenDetail.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteGenDetail.sql" />
+    <Build Include="dbo\Stored Procedures\spEditGenDetail.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllGenDetail.sql" />
+    <Build Include="dbo\Stored Procedures\spGetGenDetail_ById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\SO_DataBase.publish.xml" />

@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE [dbo].[spGetAllGenDetail]
+AS
+BEGIN
+	SET  NOCOUNT ON;
+	SELECT *
+	FROM GeneralDetails
+END

@@ -84,19 +84,20 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
         public IActionResult ReviewSubmit(ProductModel model)
         {
-
-
-
-
             return View(model);
         }
+
+
+
+
         public IActionResult ReviewSubmit(ProductModel model,bool IsNew = true)
         {
             if (IsNew)
             {
                 _products_Data.Save(model);
-                return RedirectToAction("");
+                return RedirectToAction("Index");
             }
+
             else
             {
                 return View(model);

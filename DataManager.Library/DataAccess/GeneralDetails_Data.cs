@@ -21,17 +21,17 @@ namespace DataManager.Library.DataAccess
 
         public void Delete(int id)
         {
-            _sql.SaveData("",new { id },_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData("dbo.spDeleteGenDetail",new { id },_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public void Edit(GeneralDetailsModel type)
         {
-            _sql.SaveData("",type,_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData("dbo.spEditGenDetail",type,_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public List<GeneralDetailsModel> GetAll()
         {
-            return _sql.LoadData<GeneralDetailsModel, dynamic>("",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            return _sql.LoadData<GeneralDetailsModel, dynamic>("dbo.spGetAllGenDetail",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public GeneralDetailsModel GetById(int id)
@@ -46,11 +46,11 @@ namespace DataManager.Library.DataAccess
 
         public void Save(GeneralDetailsModel type)
         {
-            _sql.SaveData("",type,_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData<GeneralDetailsModel>("dbo.spSaveGenDetail",type,_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
         public List<GeneralDetailsModel> GetTop(int x)
         {
-            return _sql.LoadData<GeneralDetailsModel,int>("",x,_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            return _sql.LoadData<GeneralDetailsModel,int>("dbo.spGenDetail_GetTop", x,_config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
     }
 }
