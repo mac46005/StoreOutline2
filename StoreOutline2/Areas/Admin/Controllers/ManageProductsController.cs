@@ -1,4 +1,4 @@
-﻿using DataManager.Library.DataAccess;
+﻿ using DataManager.Library.DataAccess;
 using DataManager.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using StoreOutline2.Areas.Admin.Models;
@@ -53,36 +53,19 @@ namespace StoreOutline2.Areas.Admin.Controllers
             ViewBag.GenData = _gen_Data.GetAll();
             ViewBag.SubData = _sub_Data.GetAll();
             ViewBag.BrandData = _brand_Data.GetAll();
-            GeneralProductViewModel vm = new GeneralProductViewModel();
+            ProductCreationViewModel vm = new ProductCreationViewModel();
             vm.Product = model;
             return View(vm);
         }
         [HttpPost]
-        public IActionResult GeneralDetails(GeneralProductViewModel model)
+        public IActionResult GeneralDetails(ProductCreationViewModel model)
         {
-            _genDetails_Data.Save(model.GenDetails);
-            var currentGenDetailsList = _genDetails_Data.GetTop(1);
 
-
-            //ProductModel productModel = new ProductModel();
-            //productModel.ProductName = model.Product.ProductName;
-            //productModel.SerialNumber = model.Product.SerialNumber;
-            //productModel.Gen_Id = model.Product.Gen_Id;
-            //productModel.RetailPrice = model.Product.RetailPrice;
-            //productModel.Tax_Id = model.Product.Tax_Id;
-            //productModel.QuantityStock = model.Product.QuantityStock;
-            //productModel.IsAvailable = model.Product.IsAvailable;
-            //productModel.CreateDate = model.Product.CreateDate;
-            //productModel.LastModified = model.Product.LastModified;
-            model.Product.Gen_Id = currentGenDetailsList[0].Id;
-            //  DO SOMETHING...........
-            //  I LOVE KAT :)
-
-            return RedirectToAction("ReviewSubmit",model.Product);
+            return RedirectToAction(nameof(ReviewSubmit), model);
         }
 
 
-        public IActionResult ReviewSubmit(ProductModel model)
+        public IActionResult ReviewSubmit(ProductCreationViewModel model)
         {
             return View(model);
         }
