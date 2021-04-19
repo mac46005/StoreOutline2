@@ -100,47 +100,37 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public IActionResult ReviewSubmit(ProductCreationViewModel model, bool IsNew = true)
+        public IActionResult ReviewSubmit(ProductModel product, string action)
         {
             _logging.CurrentAddress = nameof(ReviewSubmit) + "[POST]";
-            if (IsNew)
+            _logging.Address();
+
+
+            IActionResult result = View(product);
+            
+
+            try
             {
-                ////
-                ///Will make a system for saving images on a new view and Controller methods.
-
-
-
-
-                try
+                switch (action)
                 {
-                    //_products_Data.Save(model);
-
-                    // Save gen details
-                    _genDetails_Data.Save(model.GenDetails);
-                    _logging.InformationLog();
-
-                    // Retrieves gen detail just saved
-                    var topGen = _genDetails_Data.GetTop(1)[0];
-
-                    // Retrieves genDetails id for product.Gen_Id
-                    model.Product.Gen_Id = topGen.Id;
-
-                    // Saves the product
-                    _products_Data.Save(model.Product);
+                    case "Submit":
+                        _genDetails_Data.Save(product.GeneralDetails);
+                        product.Gen_Id = _genDetails_Data.GetTop(1)[0].Id;
+                        _products_Data.Save(product);
+                        result = RedirectToAction();
+                        break;
+                    default:
+                        break;
                 }
-                catch (SqlException ex)
-                {
-                    _logging.ErrorList(ex.Message);
-                    throw;
-                }
-
-                //Returns to Admin Home
-                return RedirectToAction("Index");
             }
-            else
+            catch (SqlException ex)
             {
-                return View(model);
+                _logging.ErrorList(ex.Message);
+                throw;
             }
+
+
+            return result;
         }
 
     }
