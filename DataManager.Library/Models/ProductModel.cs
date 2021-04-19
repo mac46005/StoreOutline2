@@ -15,6 +15,7 @@ namespace DataManager.Library.Models
         public string SerialNumber { get; set; }
 
         public int Gen_Id { get; set; }
+        public GeneralDetailsModel GeneralDetails { get; set; }
 
         [Required]
         [Range(0.01,2000)]
