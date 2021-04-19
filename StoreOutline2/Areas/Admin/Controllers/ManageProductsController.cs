@@ -1,10 +1,12 @@
 ﻿ using DataManager.Library.DataAccess;
 using DataManager.Library.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using StoreOutline2.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StoreOutline2.Areas.Admin.Controllers
@@ -18,8 +20,9 @@ namespace StoreOutline2.Areas.Admin.Controllers
         IBrand_Data _brand_Data;
         IGeneralType_Data _gen_Data;
         ISubType_Data _sub_Data;
+        ILogger<ManageProductsController> _logger;
 
-        public ManageProductsController(IProducts_Data products_Data
+        public ManageProductsController(ILogger<ManageProductsController> logger, IProducts_Data products_Data
             ,IBrand_Data brand_Data,IGeneralType_Data generalType_Data,ISubType_Data subType_Data,
             IGeneralDetails_Data genDetails_Data)
         {
@@ -28,21 +31,25 @@ namespace StoreOutline2.Areas.Admin.Controllers
             _gen_Data = generalType_Data;
             _sub_Data = subType_Data;
             _genDetails_Data = genDetails_Data;
+            _logger = logger;
         }
-
+        static string _address = "Admin/ManageProducts/";
 
         public IActionResult Index()
         {
+            _logger.LogInformation(_address + nameof(Index));
             return View();
         }
         [HttpGet]
         public IActionResult AddNewProduct()
         {
+            _logger.LogInformation(_address + nameof(AddNewProduct) + "[GET]");
             return View();
         }
         [HttpPost]
         public IActionResult AddNewProduct(ProductModel model)
         {
+            _logger.LogInformation(_address + nameof(AddNewProduct) + "[POST]");
             model.CreateDate = DateTime.Now;
             model.LastModified = DateTime.Now;
             return RedirectToAction(nameof(GeneralDetails),model);
@@ -73,14 +80,33 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-        public IActionResult ReviewSubmit(ProductModel model,bool IsNew = true)
+        public IActionResult ReviewSubmit(ProductCreationViewModel model,bool IsNew = true)
         {
             if (IsNew)
             {
-                _products_Data.Save(model);
+                ////
+                ///Will make a system for saving images on a new view and Controller methods.
+
+
+
+
+                //_products_Data.Save(model);
+                
+                // Save gen details
+                _genDetails_Data.Save(model.GenDetails);
+
+                // Retrieves gen detail just saved
+                var topGen = _genDetails_Data.GetTop(1)[0];
+
+                // Retrieves genDetails id for product.Gen_Id
+                model.Product.Gen_Id = topGen.Id;
+
+                // Saves the product
+                _products_Data.Save(model.Product);
+
+                //Returns to Admin Home
                 return RedirectToAction("Index");
             }
-
             else
             {
                 return View(model);
