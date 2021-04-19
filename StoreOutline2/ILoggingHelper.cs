@@ -2,6 +2,6 @@
 {
     public interface ILoggingHelper<T>
     {
-        void Address(string currentAddress);
+        void Address();
     }
 }
