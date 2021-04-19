@@ -90,18 +90,19 @@ namespace StoreOutline2.Areas.Admin.Controllers
             return RedirectToAction(nameof(ReviewSubmit), model);
         }
 
-
+        [HttpGet]
         public IActionResult ReviewSubmit(ProductCreationViewModel model)
         {
-            _logging.CurrentAddress = nameof(ReviewSubmit);
+            _logging.CurrentAddress = nameof(ReviewSubmit) + "[GET]";
             return View(model);
         }
 
 
 
-
+        [HttpPost]
         public IActionResult ReviewSubmit(ProductCreationViewModel model, bool IsNew = true)
         {
+            _logging.CurrentAddress = nameof(ReviewSubmit) + "[POST]";
             if (IsNew)
             {
                 ////
@@ -110,20 +111,28 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-                //_products_Data.Save(model);
+                try
+                {
+                    //_products_Data.Save(model);
 
-                // Save gen details
-                _genDetails_Data.Save(model.GenDetails);
-                _logging.InformationLog();
+                    // Save gen details
+                    _genDetails_Data.Save(model.GenDetails);
+                    _logging.InformationLog();
 
-                // Retrieves gen detail just saved
-                var topGen = _genDetails_Data.GetTop(1)[0];
+                    // Retrieves gen detail just saved
+                    var topGen = _genDetails_Data.GetTop(1)[0];
 
-                // Retrieves genDetails id for product.Gen_Id
-                model.Product.Gen_Id = topGen.Id;
+                    // Retrieves genDetails id for product.Gen_Id
+                    model.Product.Gen_Id = topGen.Id;
 
-                // Saves the product
-                _products_Data.Save(model.Product);
+                    // Saves the product
+                    _products_Data.Save(model.Product);
+                }
+                catch (SqlException ex)
+                {
+                    _logging.ErrorList(ex.Message);
+                    throw;
+                }
 
                 //Returns to Admin Home
                 return RedirectToAction("Index");
