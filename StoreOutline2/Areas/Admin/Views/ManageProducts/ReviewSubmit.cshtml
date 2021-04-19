@@ -1,19 +1,30 @@
 ﻿@model ProductCreationViewModel
 
-@{ 
+@{
     ViewData["Title"] = "Review and Submit";
 }
 
 
-<div class="container">
-
-</div>
-<button type="button" 
+<form>
+    <div class="form-group">
+        <label>Name:</label>
+        <input type="text" value="@Model.Product.ProductName" readonly/>
+    </div>
+    <div class="form-group">
+        <label>Serial Number:</label>
+        <input type="text" value="@Model.Product.SerialNumber" readonly />
+    </div>
+    <div class="form-group">
+        <label>Retail Price:</label>
+        <input type="text" value="@{ Model.Product.RetailPrice.ToString("C"); }" readonly/>
+    </div>
+</form>
+<button type="button"
         class="btn btn-primary"
-        asp-action="ReviewSubmit" 
-        asp-route-product="@Model.Product" 
-        asp-route-action="Submit"
-        >Submit
-    </button>
+        asp-action="ReviewSubmit"
+        asp-route-product="@Model.Product"
+        asp-route-action="Submit">
+    Submit
+</button>
 
 
