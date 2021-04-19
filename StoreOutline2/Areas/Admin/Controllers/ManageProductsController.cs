@@ -62,6 +62,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             model.LastModified = DateTime.Now;
             return RedirectToAction(nameof(GeneralDetails), model);
         }
+
         [HttpGet]
         public IActionResult GeneralDetails(ProductModel model)
         {
@@ -78,15 +79,17 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
                 _logging.ErrorList(ex.Message);
             }
-
-            ProductCreationViewModel vm = new ProductCreationViewModel();
-            vm.Product = model;
-            return View(vm);
+            TempData["ProductObj"] = (ProductModel)model;
+            return View();
         }
+
         [HttpPost]
         public IActionResult GeneralDetails(ProductCreationViewModel model)
         {
             _logging.CurrentAddress = nameof(GeneralDetails) + "[POST]";
+
+
+            model.Product = (ProductModel)TempData["ProductObj"];
             return RedirectToAction(nameof(ReviewSubmit), model);
         }
 
@@ -96,7 +99,6 @@ namespace StoreOutline2.Areas.Admin.Controllers
             _logging.CurrentAddress = nameof(ReviewSubmit) + "[GET]";
             return View(model);
         }
-
 
 
         [HttpPost]

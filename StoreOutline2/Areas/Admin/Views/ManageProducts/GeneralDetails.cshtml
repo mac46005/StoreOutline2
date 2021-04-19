@@ -1,4 +1,4 @@
-﻿@model GeneralProductViewModel
+﻿@model ProductCreationViewModel
 @{
     ViewData["Title"] = "Add new Product";
     string NoData = nameof(NoData);
@@ -88,5 +88,8 @@
             <input type="text" class="form-control" aria-label="Enter Brand here" />
         </div>
     </div>
+
+    <input type="hidden" asp-for="@Model.Product" value="@Model.Product" readonly/>
+
     <button type="submit">To "ReviewSubmit"</button>
 </form>
