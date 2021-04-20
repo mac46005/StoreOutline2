@@ -36,7 +36,6 @@ namespace StoreOutline2.Areas.Admin.Controllers
             _logger = logger;
             _logging = new LoggingHelper<ManageProductsController>("Admin/ManageProducts/", _logger);
         }
-        static string _address = "Admin/ManageProducts/";
 
         public IActionResult Index()
         {
@@ -44,96 +43,17 @@ namespace StoreOutline2.Areas.Admin.Controllers
             _logging.Address();
             return View();
         }
+
+
+
+
+
         [HttpGet]
-        public IActionResult AddNewProduct()
+        public IActionResult NewProductInformation()
         {
-            _logging.CurrentAddress = nameof(AddNewProduct) + "[GET]";
+            _logging.CurrentAddress = nameof(NewProductInformation) + "[GET]";
             _logging.InformationLog("Product instance instantiated.");
             return View();
         }
-        [HttpPost]
-        public IActionResult AddNewProduct(ProductModel model)
-        {
-            _logging.CurrentAddress = nameof(AddNewProduct) + "[POST]";
-            _logging.InformationLog("Sending ProductModel to GeneralDetails for further processing.");
-
-
-            model.CreateDate = DateTime.Now;
-            model.LastModified = DateTime.Now;
-            return RedirectToAction(nameof(GeneralDetails), model);
-        }
-
-        [HttpGet]
-        public IActionResult GeneralDetails(ProductModel model)
-        {
-            _logging.CurrentAddress = nameof(GeneralDetails) + "[GET]";
-
-            try
-            {
-                ViewBag.GenData = _gen_Data.GetAll();
-                ViewBag.SubData = _sub_Data.GetAll();
-                ViewBag.BrandData = _brand_Data.GetAll();
-            }
-            catch (SqlException ex)
-            {
-
-                _logging.ErrorList(ex.Message);
-            }
-            TempData["ProductObj"] = (ProductModel)model;
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult GeneralDetails(ProductCreationViewModel model)
-        {
-            _logging.CurrentAddress = nameof(GeneralDetails) + "[POST]";
-
-
-            model.Product = (ProductModel)TempData["ProductObj"];
-            return RedirectToAction(nameof(ReviewSubmit), model);
-        }
-
-        [HttpGet]
-        public IActionResult ReviewSubmit(ProductCreationViewModel model)
-        {
-            _logging.CurrentAddress = nameof(ReviewSubmit) + "[GET]";
-            return View(model);
-        }
-
-
-        [HttpPost]
-        public IActionResult ReviewSubmit(ProductModel product, string action)
-        {
-            _logging.CurrentAddress = nameof(ReviewSubmit) + "[POST]";
-            _logging.Address();
-
-
-            IActionResult result = View(product);
-            
-
-            try
-            {
-                switch (action)
-                {
-                    case "Submit":
-                        _genDetails_Data.Save(product.GeneralDetails);
-                        product.Gen_Id = _genDetails_Data.GetTop(1)[0].Id;
-                        _products_Data.Save(product);
-                        result = RedirectToAction();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (SqlException ex)
-            {
-                _logging.ErrorList(ex.Message);
-                throw;
-            }
-
-
-            return result;
-        }
-
     }
 }

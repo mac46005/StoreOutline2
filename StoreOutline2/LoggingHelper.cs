@@ -27,7 +27,7 @@ namespace StoreOutline2
 
         public void Address()
         {
-            _logger.LogInformation("CURRENT ADDRESS: " + CurrentAddress);
+            _logger.LogInformation("CURRENT ADDRESS: "+ _address + CurrentAddress);
         }
         public void InformationLog(params string[] messages)
         {

@@ -10,5 +10,6 @@
     [IsAvailable] BIT NULL, 
     [CreateDate] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 
     [LastModified] DATETIME2 NOT NULL, 
+    [Supplier_Id] INT NULL, 
     CONSTRAINT [FK_Product_ToGeneralDetails] FOREIGN KEY ([GeneralDetails_Id]) REFERENCES [GeneralDetails]([Id]), 
 )
