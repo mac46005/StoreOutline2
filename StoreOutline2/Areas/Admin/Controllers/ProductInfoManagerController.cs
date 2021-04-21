@@ -105,7 +105,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-        /// GeneralType
+        /// Product Class
         /// 
         /// 
         /// 
@@ -166,7 +166,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
 
 
-        /// SubType
+        /// Product Type
         /// 
         /// 
         /// 

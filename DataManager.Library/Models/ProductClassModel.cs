@@ -26,8 +26,5 @@ namespace DataManager.Library.Models
 
         public ICollection<int> Type_Ids { get; set; }
         public List<ProductTypeModel> Types { get; set; }
-
-
-
     }
 }
