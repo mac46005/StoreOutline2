@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [dbo].[spSaveGenDetail]
 	@brand_Id int,
-	@genType_Id int,
-	@subType_Id int
+	@productClass_Id int,
+	@productType_Id int
 AS
 BEGIN
 	SET NOCOUNT ON;
 
-	INSERT INTO GeneralDetails(Brand_Id,GeneralType_Id,SubType_Id)
-	VALUES(@brand_Id,@genType_Id,@subType_Id);
+	INSERT INTO GeneralDetails(Brand_Id,Class_Id,[Type_Id])
+	VALUES(@brand_Id,@productClass_Id,@productType_Id);
 END

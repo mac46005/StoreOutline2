@@ -1,4 +1,4 @@
-﻿@model List<GeneralTypeModel>
+﻿@model List<ProductClassModel>
 @{ 
     ViewBag.Title = "GeneralType List";
 }
@@ -27,12 +27,12 @@
                 </tr>
             </thead> 
             <tbody>
-                @foreach (var genType in Model)
+                @foreach (var pClass in Model)
                 {
                     <tr>
-                        <td>@genType.TypeName</td>
-                        <td class="col-1"><a asp-action="AddEditBrand" asp-route-id="@genType.Id" class="btn btn-secondary">Edit</a></td>
-                        <td class="col-1"><a asp-action="Delete" asp-route-category="GeneralType" asp-route-id="@genType.Id" asp-route-name="@genType.TypeName" class="btn btn-danger">Delete</a></td>
+                        <td>@pClass.Class</td>
+                        <td class="col-1"><a asp-action="AddEditBrand" asp-route-id="@pClass.Id" class="btn btn-secondary">Edit</a></td>
+                        <td class="col-1"><a asp-action="Delete" asp-route-category="ProductClass" asp-route-id="@pClass.Id" asp-route-name="@pClass.Class" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
             </tbody>

@@ -7,6 +7,6 @@ namespace DataManager.Library.DataAccess
 {
     public interface IProductType_Data : IManageData<ProductTypeModel>
     {
-        List<TypeClassModel> GetListOfSubWithGenAssociated();
+        List<TypeClassModel> GetListOfTypeWithClassAssociated();
     }
 }

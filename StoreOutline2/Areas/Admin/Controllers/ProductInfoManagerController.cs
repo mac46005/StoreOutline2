@@ -75,7 +75,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
                     TempData[_tempKey] = $"Succesfully edited Brand: {brandModel.Name.ToUpper()}";
                     return RedirectToAction("Index");
                 }
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == brandModel.Name.ToUpper()))
+                if (_pim_Helper.PIMOnly_GetAllBrandClassTypeNames().Exists(x => x.ToUpper() == brandModel.Name.ToUpper()))
                 {
                     ModelState.AddModelError("",duplicateErrorMessage + brandModel.Name);
                     return View(brandModel);
@@ -134,10 +134,10 @@ namespace StoreOutline2.Areas.Admin.Controllers
                 if (productClassModel.Id != null)
                 {
                     _productClass_Data.Edit(productClassModel);
-                    TempData[_tempKey] = $"Succesfully edited General Type: {productClassModel.Class.ToUpper()}.";
+                    TempData[_tempKey] = $"Succesfully edited Product Class: {productClassModel.Class.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == productClassModel.Class.ToUpper()))
+                if (_pim_Helper.PIMOnly_GetAllBrandClassTypeNames().Exists(x => x.ToUpper() == productClassModel.Class.ToUpper()))
                 {
                     ModelState.AddModelError("", duplicateErrorMessage + productClassModel.Class);
                     return View(productClassModel);
@@ -145,7 +145,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
                 else
                 {
                     _productClass_Data.Save(productClassModel);
-                    TempData[_tempKey] = $"Successfully added new General Type: {productClassModel.Class.ToUpper()}.";
+                    TempData[_tempKey] = $"Successfully added new Product Class: {productClassModel.Class.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
             }
@@ -155,7 +155,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             }
         }
 
-        public IActionResult GeneralTypeList()
+        public IActionResult ProductClassList()
         {
             var productClassModelList = _productClass_Data.GetAll();
             return View(productClassModelList);
@@ -186,46 +186,46 @@ namespace StoreOutline2.Areas.Admin.Controllers
                 ViewBag.AddEdit = "Add";
                 result = View();
             }
-            ViewBag.GenList = _productClass_Data.GetAll();
+            ViewBag.classList = _productClass_Data.GetAll();
             return result;
         }
         [HttpPost]
-        public IActionResult AddEditSubType(ProductTypeModel subTypeModel)
+        public IActionResult AddEditProductType(ProductTypeModel productTypeModel)
         {
             IActionResult result = View();
             if (ModelState.IsValid)
             {
-                if (subTypeModel.Id != null)
+                if (productTypeModel.Id != null)
                 {
-                    _productType_Data.Edit(subTypeModel);
-                    TempData[_tempKey] = $"Successfully edited Sub Type: {subTypeModel.Type}";
-                    result = RedirectToAction("SubType_List");
+                    _productType_Data.Edit(productTypeModel);
+                    TempData[_tempKey] = $"Successfully edited Product Type: {productTypeModel.Type}";
+                    result = RedirectToAction("ProductType_List");
                 }
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == subTypeModel.Type.ToUpper()))
+                if (_pim_Helper.PIMOnly_GetAllBrandClassTypeNames().Exists(x => x.ToUpper() == productTypeModel.Type.ToUpper()))
                 {
-                    ModelState.AddModelError("", duplicateErrorMessage + subTypeModel.Type);
-                    result = View(subTypeModel);
+                    ModelState.AddModelError("", duplicateErrorMessage + productTypeModel.Type);
+                    result = View(productTypeModel);
                 }
                 else
                 {
-                    _productType_Data.Save(subTypeModel);
-                    TempData[_tempKey] = $"Successfully saved Sub Type: {subTypeModel.Type}";
+                    _productType_Data.Save(productTypeModel);
+                    TempData[_tempKey] = $"Successfully saved Product Type: {productTypeModel.Type}";
                     result = RedirectToAction("Index");
                 }
             }
             else
             {
                 
-                result = View(subTypeModel);
+                result = View(productTypeModel);
             }
-            ViewBag.GenList = _productClass_Data.GetAll();
+            ViewBag.ClassList = _productClass_Data.GetAll();
             return result;
         }
 
-        public IActionResult SubTypeList()
+        public IActionResult ProductType_List()
         {
-            var subTypeList = _productType_Data.GetListOfSubWithGenAssociated();
-            return View(subTypeList);
+            var productTypeList = _productType_Data.GetListOfTypeWithClassAssociated();
+            return View(productTypeList);
         }
 
 

@@ -7,7 +7,7 @@ namespace DataManager.Library.Models
     public class TypeClassModel
     {
         public int Id { get; set; }
-        public string SubTypeName { get; set; }
-        public string GeneralType { get; set; }
+        public string ProductType { get; set; }
+        public string ProductClass { get; set; }
     }
 }

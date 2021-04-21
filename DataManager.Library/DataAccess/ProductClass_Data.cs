@@ -17,9 +17,9 @@ namespace DataManager.Library.DataAccess
             _sql = sql;
             _config = config;
         }
-        public void Save(ProductClassModel genType)
+        public void Save(ProductClassModel productClass)
         {
-            _sql.SaveData("dbo.spSaveProductClass", new { typeName = genType.Class }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData("dbo.spSaveProductClass", new { Class = productClass.Class }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public List<ProductClassModel> GetAll()

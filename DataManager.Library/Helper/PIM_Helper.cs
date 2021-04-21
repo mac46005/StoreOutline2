@@ -16,9 +16,9 @@ namespace DataManager.Library.Helper
             _config = config;
             _sql = sql;
         }
-        public List<string> PIMOnly_GetAllBrandGenSubNames()
+        public List<string> PIMOnly_GetAllBrandClassTypeNames()
         {
-            var stringList = _sql.LoadData<string, dynamic>("spPIMOnly_GetALLBrandSubGenNames", new { }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
+            var stringList = _sql.LoadData<string, dynamic>("spPIMOnly_GetAllBrandTypeClassNames", new { }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
             return stringList;
         }
 

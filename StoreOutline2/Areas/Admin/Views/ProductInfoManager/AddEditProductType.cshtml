@@ -5,32 +5,32 @@
     <h5>Currently Editing @ViewBag.Name</h5>
 }
 <div asp-validation-summary="All" class="alert-danger text-danger"></div>
-<form asp-action="AddEditSubType" method="post" class="mt-3">
+<form asp-action="AddEditProductType" method="post" class="mt-3">
     @if (Model != null)
     {
         <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
     }
     <div class="form-group mb-3">
-        <label class="form-label">SubType Name:</label>
+        <label class="form-label">Type Name:</label>
         <input asp-for="@Model.Type" type="text" class="form-control" placeholder="e.g LipStick" />
     </div>
-    @if (ViewBag.GenList == null)
+    @if (ViewBag.ClassList == null)
     {
 
     }
     else
     {
-        @if (ViewBag.GenList.Count == 0)
+        @if (ViewBag.ClassList.Count == 0)
         {
             <div class="alert-danger">
-                Must have General type to submit subtype.
-                <a asp-action="AddEditGeneralType" class="btn btn-primary">Create General Type</a>
+                Must have Product Class to submit subtype.
+                <a asp-action="AddEditProductCLass" class="btn btn-primary">Create Product Class</a>
             </div>
         }
         else
         {
             <div class="mt-1">
-                <label class="form-label">Stem Type:</label>
+                <label class="form-label">Stem Class:</label>
                 <select asp-for="@Model.GeneralType_Id" class="dropdown">
                     @foreach (var genType in ViewBag.GenList)
                     {

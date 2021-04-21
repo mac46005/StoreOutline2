@@ -1,18 +1,18 @@
-﻿@model GeneralTypeModel
-<h1>@ViewBag.AddEdit General Type</h1>
+﻿@model ProductClassModel
+<h1>@ViewBag.AddEdit Product CLass</h1>
 @if (ViewBag.Name != null)
 {
     <h5>Currently Editing @ViewBag.Name</h5>
 }
 <div asp-validation-summary="All" class="alert-danger text-danger"></div>
-<form asp-action="AddEditGeneralType" method="post" class="mt-3">
+<form asp-action="AddEditProductClass" method="post" class="mt-3">
     @if (Model != null)
     {
         <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
     }
     <div class="form-group mb-3">
-        <label class="form-label">General Type Name:</label>
-        <input asp-for="@Model.TypeName" type="text" class="form-control" placeholder="e.g Makeup" />
+        <label class="form-label">Class Name:</label>
+        <input asp-for="@Model.Class" type="text" class="form-control" placeholder="e.g Makeup" />
     </div>
     <button class="btn btn-outline-primary">SUBMIT</button>
 </form>

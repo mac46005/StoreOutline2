@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spPIMOnly_GetALLBrandTypeClassNames]
+﻿CREATE PROCEDURE [dbo].[spPIMOnly_GetAllBrandTypeClassNames]
 AS
 BEGIN
 	SET NOCOUNT ON;

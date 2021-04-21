@@ -22,19 +22,19 @@
         <table class="table bg-white table-bordered table-striped container">
             <thead>
                 <tr>
-                    <th class="col-3">SubType Name</th>
-                    <th class="col-5">General Type</th>
+                    <th class="col-3">Product Type</th>
+                    <th class="col-5">Product Class</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var subType in Model)
+                @foreach (var pType in Model)
                 {
                     <tr>
-                        <td>@subType.SubTypeName</td>
-                        <td>@subType.GeneralType</td>
-                        <td class="col-1"><a asp-action="AddEditSubType" asp-route-id="@subType.Id" class="btn btn-secondary">Edit</a></td>
-                        <td class="col-1"><a asp-action="Delete" asp-route-category="SubType" asp-route-id="@subType.Id" asp-route-name="@subType.SubTypeName" class="btn btn-danger">Delete</a></td>
+                        <td>@pType.ProductType</td>
+                        <td>@pType.ProductClass</td>
+                        <td class="col-1"><a asp-action="AddEditSubType" asp-route-id="@pType.Id" class="btn btn-secondary">Edit</a></td>
+                        <td class="col-1"><a asp-action="Delete" asp-route-category="SubType" asp-route-id="@pType.Id" asp-route-name="@pType.ProductType" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
             </tbody>
