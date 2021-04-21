@@ -11,11 +11,16 @@
         <h3>New Product information</h3>
     </div>
     <div>
-        <form class="row">
+        <form>
             <div>
                 <label class="form-label">Product Name:</label>
                 @Html.TextBoxFor(p => p.ProductName)
                 <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label class="form-label">Serial Number:</label>
+                @Html.TextBoxFor(p => p.SerialNumber);
             </div>
         </form>
     </div>
