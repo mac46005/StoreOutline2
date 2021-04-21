@@ -222,7 +222,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             return result;
         }
 
-        public IActionResult ProductType_List()
+        public IActionResult ProductTypeList()
         {
             var productTypeList = _productType_Data.GetListOfTypeWithClassAssociated();
             return View(productTypeList);

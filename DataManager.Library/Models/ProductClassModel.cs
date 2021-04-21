@@ -19,5 +19,15 @@ namespace DataManager.Library.Models
                 _class = value.Trim();
             }
         }
+
+
+
+
+
+        public ICollection<int> Type_Ids { get; set; }
+        public List<ProductTypeModel> Types { get; set; }
+
+
+
     }
 }
