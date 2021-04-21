@@ -29,25 +29,25 @@ namespace DataManager.Library.DataAccess
 
         public List<ProductTypeModel> GetAll()
         {
-            var stList = _sql.LoadData<ProductTypeModel, dynamic>("dbo.spGetAllProductType",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
-            return stList;
+            var tList = _sql.LoadData<ProductTypeModel, dynamic>("dbo.spGetAllProductType",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            return tList;
         }
 
         public ProductTypeModel GetById(int id)
         {
-            var stList = _sql.LoadData<ProductTypeModel,dynamic>("dbo.spGetProductType_ById",new { Id= id },_config.GetSection("Data")[Settings.SO_DB_Key()]);
-            return stList.Find(x => x.Id == id);
+            var tList = _sql.LoadData<ProductTypeModel,dynamic>("dbo.spGetProductType_ById",new { Id= id },_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            return tList.Find(x => x.Id == id);
         }
 
         public void Save(ProductTypeModel type)
         {
-            _sql.SaveData("dbo.spSaveProductType", new { SubTypeName = type.Type, GeneralType_Id = type.GeneralType_Id }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData("dbo.spSaveProductType", new { type = type.Type, class_Id = type.ProductClass_Id }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public List<TypeClassModel> GetListOfTypeWithClassAssociated()
         {
-            var subGenList = _sql.LoadData<TypeClassModel, dynamic>("dbo.spGetTypeWithClassAssociated",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
-            return subGenList;
+            var tList = _sql.LoadData<TypeClassModel, dynamic>("dbo.spGetTypeWithClassAssociated",new { },_config.GetSection("Data")[Settings.SO_DB_Key()]);
+            return tList;
         }
 
         public List<string> GetNames()

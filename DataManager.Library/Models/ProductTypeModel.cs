@@ -20,6 +20,6 @@ namespace DataManager.Library.Models
             }
         }
         [Required(ErrorMessage = "Please select the associated general type in the list.")]
-        public int GeneralType_Id { get; set; }
+        public int ProductClass_Id { get; set; }
     }
 }

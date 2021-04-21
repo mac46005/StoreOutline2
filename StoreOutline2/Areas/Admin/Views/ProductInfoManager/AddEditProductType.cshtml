@@ -31,10 +31,10 @@
         {
             <div class="mt-1">
                 <label class="form-label">Stem Class:</label>
-                <select asp-for="@Model.GeneralType_Id" class="dropdown">
-                    @foreach (var genType in ViewBag.GenList)
+                <select asp-for="@Model.ProductClass_Id" class="dropdown">
+                    @foreach (var cls in ViewBag.ClassList)
                     {
-                        <option class="" value="@genType.Id">@genType.TypeName</option>
+                        <option class="" value="@cls.Id">@cls.Class</option>
                     }
                 </select>
             </div>
