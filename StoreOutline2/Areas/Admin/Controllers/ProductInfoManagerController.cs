@@ -18,8 +18,8 @@ namespace StoreOutline2.Areas.Admin.Controllers
         private string _tempKey = "message";
         private IConfiguration _config;
         private IBrand_Data _brand_Data;
-        private IProductClass_Data _genType_Data;
-        private IProductType_Data _subType_Data;
+        private IProductClass_Data _productClass_Data;
+        private IProductType_Data _productType_Data;
         private IPIM_Helper _pim_Helper;
         public ProductInfoManagerController(IConfiguration config,
             IBrand_Data brand_Data, IProductClass_Data genTypeData, IProductType_Data subType_Data,
@@ -27,8 +27,8 @@ namespace StoreOutline2.Areas.Admin.Controllers
         {
             _config = config;
             _brand_Data = brand_Data;
-            _genType_Data = genTypeData;
-            _subType_Data = subType_Data;
+            _productClass_Data = genTypeData;
+            _productType_Data = subType_Data;
             _pim_Helper = pim_Helper;
         }
         public IActionResult Index()
@@ -110,14 +110,14 @@ namespace StoreOutline2.Areas.Admin.Controllers
         /// 
         /// 
         [HttpGet]
-        public IActionResult AddEditGeneralType(int? id)
+        public IActionResult AddEditProductClass(int? id)
         {
             if (id != null)
             {
                 ViewBag.AddEdit = "Edit";
-                var genTypeModel = _genType_Data.GetById((int)id);
-                ViewBag.Name = genTypeModel.TypeName;
-                return View(genTypeModel);
+                var prodClassModel = _productClass_Data.GetById((int)id);
+                ViewBag.Name = prodClassModel.Class;
+                return View(prodClassModel);
             }
             else
             {
@@ -127,38 +127,38 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
         }
         [HttpPost]
-        public IActionResult AddEditGeneralType(ProductClassModel generalTypeModel)
+        public IActionResult AddEditProductClass(ProductClassModel productClassModel)
         {
             if (ModelState.IsValid)
             {
-                if (generalTypeModel.Id != null)
+                if (productClassModel.Id != null)
                 {
-                    _genType_Data.Edit(generalTypeModel);
-                    TempData[_tempKey] = $"Succesfully edited General Type: {generalTypeModel.TypeName.ToUpper()}.";
+                    _productClass_Data.Edit(productClassModel);
+                    TempData[_tempKey] = $"Succesfully edited General Type: {productClassModel.Class.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == generalTypeModel.TypeName.ToUpper()))
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == productClassModel.Class.ToUpper()))
                 {
-                    ModelState.AddModelError("", duplicateErrorMessage + generalTypeModel.TypeName);
-                    return View(generalTypeModel);
+                    ModelState.AddModelError("", duplicateErrorMessage + productClassModel.Class);
+                    return View(productClassModel);
                 }
                 else
                 {
-                    _genType_Data.Save(generalTypeModel);
-                    TempData[_tempKey] = $"Successfully added new General Type: {generalTypeModel.TypeName.ToUpper()}.";
+                    _productClass_Data.Save(productClassModel);
+                    TempData[_tempKey] = $"Successfully added new General Type: {productClassModel.Class.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
             }
             else
             {
-                return View(generalTypeModel);
+                return View(productClassModel);
             }
         }
 
         public IActionResult GeneralTypeList()
         {
-            var genTypeModelList = _genType_Data.GetAll();
-            return View(genTypeModelList);
+            var productClassModelList = _productClass_Data.GetAll();
+            return View(productClassModelList);
         }
 
 
@@ -171,22 +171,22 @@ namespace StoreOutline2.Areas.Admin.Controllers
         /// 
         /// 
         [HttpGet]
-        public IActionResult AddEditSubType(int? id)
+        public IActionResult AddEditProductType(int? id)
         {
             IActionResult result = View();
             if (id != null)
             {
                 ViewBag.AddEdit = "Edit";
-                var subType = _subType_Data.GetById((int)id);
-                ViewBag.Name = subType.SubTypeName;
-                result = View(subType);
+                var productType = _productType_Data.GetById((int)id);
+                ViewBag.Name = productType.Type;
+                result = View(productType);
             }
             else
             {
                 ViewBag.AddEdit = "Add";
                 result = View();
             }
-            ViewBag.GenList = _genType_Data.GetAll();
+            ViewBag.GenList = _productClass_Data.GetAll();
             return result;
         }
         [HttpPost]
@@ -197,19 +197,19 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 if (subTypeModel.Id != null)
                 {
-                    _subType_Data.Edit(subTypeModel);
-                    TempData[_tempKey] = $"Successfully edited Sub Type: {subTypeModel.SubTypeName}";
+                    _productType_Data.Edit(subTypeModel);
+                    TempData[_tempKey] = $"Successfully edited Sub Type: {subTypeModel.Type}";
                     result = RedirectToAction("SubType_List");
                 }
-                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == subTypeModel.SubTypeName.ToUpper()))
+                if (_pim_Helper.PIMOnly_GetAllBrandGenSubNames().Exists(x => x.ToUpper() == subTypeModel.Type.ToUpper()))
                 {
-                    ModelState.AddModelError("", duplicateErrorMessage + subTypeModel.SubTypeName);
+                    ModelState.AddModelError("", duplicateErrorMessage + subTypeModel.Type);
                     result = View(subTypeModel);
                 }
                 else
                 {
-                    _subType_Data.Save(subTypeModel);
-                    TempData[_tempKey] = $"Successfully saved Sub Type: {subTypeModel.SubTypeName}";
+                    _productType_Data.Save(subTypeModel);
+                    TempData[_tempKey] = $"Successfully saved Sub Type: {subTypeModel.Type}";
                     result = RedirectToAction("Index");
                 }
             }
@@ -218,13 +218,13 @@ namespace StoreOutline2.Areas.Admin.Controllers
                 
                 result = View(subTypeModel);
             }
-            ViewBag.GenList = _genType_Data.GetAll();
+            ViewBag.GenList = _productClass_Data.GetAll();
             return result;
         }
 
         public IActionResult SubTypeList()
         {
-            var subTypeList = _subType_Data.GetListOfSubWithGenAssociated();
+            var subTypeList = _productType_Data.GetListOfSubWithGenAssociated();
             return View(subTypeList);
         }
 
@@ -275,12 +275,12 @@ namespace StoreOutline2.Areas.Admin.Controllers
             }
             else if (deleteModel.Category == "GeneralType")
             {
-                _genType_Data.Delete(deleteModel.Id);
+                _productClass_Data.Delete(deleteModel.Id);
                 result = RedirectToAction("GeneralTypeList");
             }
             else if (deleteModel.Category == "SubType")
             {
-                _subType_Data.Delete(deleteModel.Id);
+                _productType_Data.Delete(deleteModel.Id);
                 result = RedirectToAction("SubTypeList");
             }
             else

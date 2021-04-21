@@ -41,7 +41,7 @@ namespace DataManager.Library.DataAccess
 
         public void Save(ProductTypeModel type)
         {
-            _sql.SaveData("dbo.spSaveProductType", new { SubTypeName = type.SubTypeName, GeneralType_Id = type.GeneralType_Id }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData("dbo.spSaveProductType", new { SubTypeName = type.Type, GeneralType_Id = type.GeneralType_Id }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public List<TypeClassModel> GetListOfSubWithGenAssociated()

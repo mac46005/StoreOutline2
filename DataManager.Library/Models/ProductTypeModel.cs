@@ -10,13 +10,13 @@ namespace DataManager.Library.Models
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Please enter a valid Sub Type Name.")]
-        private string subTypeName;
-        public string SubTypeName
+        private string _type;
+        public string Type
         {
-            get { return subTypeName; }
+            get { return _type; }
             set
             {
-                subTypeName = value.Trim();
+                _type = value.Trim();
             }
         }
         [Required(ErrorMessage = "Please select the associated general type in the list.")]

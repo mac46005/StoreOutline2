@@ -10,13 +10,13 @@ namespace DataManager.Library.Models
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Please enter a valid general type name.")]
-        private string _typeName;
-        public string TypeName
-        {
-            get{ return _typeName; }
+        private string _class;
+        public string Class
+        { 
+            get{ return _class; }
             set
             {
-                _typeName = value.Trim();
+                _class = value.Trim();
             }
         }
     }
