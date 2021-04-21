@@ -116,7 +116,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             {
                 ViewBag.AddEdit = "Edit";
                 var prodClassModel = _productClass_Data.GetById((int)id);
-                ViewBag.Name = prodClassModel.Class;
+                ViewBag.Name = prodClassModel.ClassName;
                 return View(prodClassModel);
             }
             else
@@ -134,18 +134,18 @@ namespace StoreOutline2.Areas.Admin.Controllers
                 if (productClassModel.Id != null)
                 {
                     _productClass_Data.Edit(productClassModel);
-                    TempData[_tempKey] = $"Succesfully edited Product Class: {productClassModel.Class.ToUpper()}.";
+                    TempData[_tempKey] = $"Succesfully edited Product Class: {productClassModel.ClassName.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
-                if (_pim_Helper.PIMOnly_GetAllBrandClassTypeNames().Exists(x => x.ToUpper() == productClassModel.Class.ToUpper()))
+                if (_pim_Helper.PIMOnly_GetAllBrandClassTypeNames().Exists(x => x.ToUpper() == productClassModel.ClassName.ToUpper()))
                 {
-                    ModelState.AddModelError("", duplicateErrorMessage + productClassModel.Class);
+                    ModelState.AddModelError("", duplicateErrorMessage + productClassModel.ClassName);
                     return View(productClassModel);
                 }
                 else
                 {
                     _productClass_Data.Save(productClassModel);
-                    TempData[_tempKey] = $"Successfully added new Product Class: {productClassModel.Class.ToUpper()}.";
+                    TempData[_tempKey] = $"Successfully added new Product Class: {productClassModel.ClassName.ToUpper()}.";
                     return RedirectToAction("Index");
                 }
             }
@@ -222,9 +222,20 @@ namespace StoreOutline2.Areas.Admin.Controllers
             return result;
         }
 
+
+
+
+
+
+        ///NOTE: Get rid of GetListOfTypeWithClassAssociated and reuse other storage procedures.
         public IActionResult ProductTypeList()
         {
-            var productTypeList = _productType_Data.GetListOfTypeWithClassAssociated();
+            var productTypeList = _productType_Data.GetAll();
+            productTypeList
+                .ForEach(x => 
+                {
+                    x.ProductClass = _productClass_Data.GetById(x.ProductClass_Id);
+                });
             return View(productTypeList);
         }
 

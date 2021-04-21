@@ -32,9 +32,9 @@
                 {
                     <tr>
                         <td>@pType.Type</td>
-                        <td>@pType.ProductClass_Id</td>
-                        <td class="col-1"><a asp-action="AddEditSubType" asp-route-id="@pType.Id" class="btn btn-secondary">Edit</a></td>
-                        <td class="col-1"><a asp-action="Delete" asp-route-category="SubType" asp-route-id="@pType.Id" asp-route-name="@pType.ProductType" class="btn btn-danger">Delete</a></td>
+                        <td>@pType.ProductClass.ClassName</td>
+                        <td class="col-1"><a asp-action="AddEdit" asp-route-id="@pType.Id" class="btn btn-secondary">Edit</a></td>
+                        <td class="col-1"><a asp-action="Delete" asp-route-category="ProductType" asp-route-id="@pType.Id" asp-route-name="@pType.Type" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
             </tbody>

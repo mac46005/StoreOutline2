@@ -9,14 +9,14 @@ namespace DataManager.Library.Models
     public class ProductClassModel
     {
         public int? Id { get; set; }
-        [Required(ErrorMessage = "Please enter a valid general type name.")]
-        private string _class;
-        public string Class
+        [Required(ErrorMessage = "Please enter a valid product class name.")]
+        private string _className;
+        public string ClassName
         { 
-            get{ return _class; }
+            get{ return _className; }
             set
             {
-                _class = value.Trim();
+                _className = value.Trim();
             }
         }
 

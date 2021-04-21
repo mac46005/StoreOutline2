@@ -19,7 +19,7 @@ namespace DataManager.Library.DataAccess
         }
         public void Save(ProductClassModel productClass)
         {
-            _sql.SaveData("dbo.spSaveProductClass", new { Class = productClass.Class }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
+            _sql.SaveData("dbo.spSaveProductClass", new { Class = productClass.ClassName }, _config.GetSection("Data")[Settings.SO_DB_Key()]);
         }
 
         public List<ProductClassModel> GetAll()
