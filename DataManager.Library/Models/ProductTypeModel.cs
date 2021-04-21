@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataManager.Library.Models
 {
-    public class SubTypeModel
+    public class ProductTypeModel
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Please enter a valid Sub Type Name.")]

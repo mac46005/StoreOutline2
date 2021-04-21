@@ -5,8 +5,8 @@ using System.Text;
 
 namespace DataManager.Library.DataAccess
 {
-    public interface ISubType_Data : IManageData<SubTypeModel>
+    public interface IProductType_Data : IManageData<ProductTypeModel>
     {
-        List<SubGenModel> GetListOfSubWithGenAssociated();
+        List<TypeClassModel> GetListOfSubWithGenAssociated();
     }
 }

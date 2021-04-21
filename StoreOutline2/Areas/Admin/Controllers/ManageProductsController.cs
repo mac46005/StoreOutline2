@@ -19,13 +19,13 @@ namespace StoreOutline2.Areas.Admin.Controllers
         IGeneralDetails_Data _genDetails_Data;
         IProducts_Data _products_Data;
         IBrand_Data _brand_Data;
-        IGeneralType_Data _gen_Data;
-        ISubType_Data _sub_Data;
+        IProductClass_Data _gen_Data;
+        IProductType_Data _sub_Data;
         ILogger<ManageProductsController> _logger;
         LoggingHelper<ManageProductsController> _logging;
 
         public ManageProductsController(ILogger<ManageProductsController> logger, IProducts_Data products_Data
-            , IBrand_Data brand_Data, IGeneralType_Data generalType_Data, ISubType_Data subType_Data,
+            , IBrand_Data brand_Data, IProductClass_Data generalType_Data, IProductType_Data subType_Data,
             IGeneralDetails_Data genDetails_Data)
         {
             _products_Data = products_Data;

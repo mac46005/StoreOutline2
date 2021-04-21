@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataManager.Library.Models
 {
-    public class GeneralTypeModel
+    public class ProductClassModel
     {
         public int? Id { get; set; }
         [Required(ErrorMessage = "Please enter a valid general type name.")]

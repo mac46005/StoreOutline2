@@ -42,9 +42,9 @@ namespace StoreOutline2
 
 
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-            services.AddTransient<IGeneralType_Data, GeneralType_Data>();
+            services.AddTransient<IProductClass_Data, ProductClass_Data>();
             services.AddTransient<IBrand_Data, Brand_Data>();
-            services.AddTransient<ISubType_Data, SubType_Data>();
+            services.AddTransient<IProductType_Data, ProductType_Data>();
             services.AddTransient<IPIM_Helper, PIM_Helper>();
             services.AddTransient<IProducts_Data, Products_Data>();
             services.AddTransient<IGeneralDetails_Data, GeneralDetails_Data>();

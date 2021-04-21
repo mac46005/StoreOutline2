@@ -18,11 +18,11 @@ namespace StoreOutline2.Areas.Admin.Controllers
         private string _tempKey = "message";
         private IConfiguration _config;
         private IBrand_Data _brand_Data;
-        private IGeneralType_Data _genType_Data;
-        private ISubType_Data _subType_Data;
+        private IProductClass_Data _genType_Data;
+        private IProductType_Data _subType_Data;
         private IPIM_Helper _pim_Helper;
         public ProductInfoManagerController(IConfiguration config,
-            IBrand_Data brand_Data, IGeneralType_Data genTypeData, ISubType_Data subType_Data,
+            IBrand_Data brand_Data, IProductClass_Data genTypeData, IProductType_Data subType_Data,
             IPIM_Helper pim_Helper)
         {
             _config = config;
@@ -127,7 +127,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
 
         }
         [HttpPost]
-        public IActionResult AddEditGeneralType(GeneralTypeModel generalTypeModel)
+        public IActionResult AddEditGeneralType(ProductClassModel generalTypeModel)
         {
             if (ModelState.IsValid)
             {
@@ -190,7 +190,7 @@ namespace StoreOutline2.Areas.Admin.Controllers
             return result;
         }
         [HttpPost]
-        public IActionResult AddEditSubType(SubTypeModel subTypeModel)
+        public IActionResult AddEditSubType(ProductTypeModel subTypeModel)
         {
             IActionResult result = View();
             if (ModelState.IsValid)

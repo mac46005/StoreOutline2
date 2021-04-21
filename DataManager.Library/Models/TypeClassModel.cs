@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataManager.Library.Models
 {
-    public class SubGenModel
+    public class TypeClassModel
     {
         public int Id { get; set; }
         public string SubTypeName { get; set; }
