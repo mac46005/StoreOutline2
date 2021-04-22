@@ -4,6 +4,6 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	INSERT INTO dbo.ProductType([TypeName],Class_Id)
+	INSERT INTO dbo.ProductType([TypeName],ProductClass_Id)
 	VALUES(@typeName,@class_Id);
 END

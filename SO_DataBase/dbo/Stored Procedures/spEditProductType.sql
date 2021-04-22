@@ -7,6 +7,6 @@ BEGIN
 	SET NOCOUNT ON;
 	
 	UPDATE dbo.ProductType
-	SET [TypeName] = @typeName, class_Id = @class_Id
+	SET [TypeName] = @typeName, ProductClass_Id = @class_Id
 	WHERE Id = @id
 END

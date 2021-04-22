@@ -34,7 +34,7 @@
                 <select asp-for="@Model.ProductClass_Id" class="dropdown">
                     @foreach (var cls in ViewBag.ClassList)
                     {
-                        <option class="" value="@cls.Id">@cls.Class</option>
+                        <option class="" value="@cls.Id">@cls.ClassName</option>
                     }
                 </select>
             </div>
