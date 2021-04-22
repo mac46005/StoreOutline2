@@ -2,6 +2,6 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT Id, [Type], Class_Id
+	SELECT Id, [TypeName], Class_Id
 	FROM dbo.ProductType
 END

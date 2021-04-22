@@ -5,9 +5,9 @@ BEGIN
 	SELECT [Name]
 	FROM dbo.BrandDetail
 	UNION
-	SELECT Class
+	SELECT ClassName
 	FROM dbo.ProductClass
 	UNION
-	SELECT [Type]
+	SELECT [TypeName]
 	FROM dbo.ProductType
 END

@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[spSaveProductClass]
-	@class NVARCHAR(50)
+	@className NVARCHAR(50)
 AS
 BEGIN
 	SET NOCOUNT ON;
-	INSERT INTO dbo.ProductClass(Class)
-	VALUES(@class)
+	INSERT INTO dbo.ProductClass(ClassName)
+	VALUES(@className)
 END

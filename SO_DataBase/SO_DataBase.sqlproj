@@ -90,7 +90,6 @@
     <Build Include="dbo\Stored Procedures\spGetProductClass_ById.sql" />
     <Build Include="dbo\Stored Procedures\spSaveProductType.sql" />
     <Build Include="dbo\Stored Procedures\spGetProductType_ById.sql" />
-    <Build Include="dbo\Stored Procedures\spGetTypeWithClassAssociated.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllProductType.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteProductType.sql" />
     <Build Include="dbo\Stored Procedures\spEditProductType.sql" />

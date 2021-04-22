@@ -3,6 +3,6 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT Class
+	SELECT ClassName
 	FROM dbo.ProductClass
 END

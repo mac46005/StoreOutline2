@@ -3,7 +3,7 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT Id,Class
+	SELECT Id,ClassName
 	FROM dbo.ProductClass
 	WHERE Id = @id;
 END

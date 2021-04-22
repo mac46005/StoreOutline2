@@ -3,6 +3,6 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT [Type]
+	SELECT [TypeName]
 	FROM dbo.ProductType
 END

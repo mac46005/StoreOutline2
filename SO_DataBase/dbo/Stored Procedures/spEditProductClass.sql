@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [dbo].[spEditProductClass]
 	@id int,
-	@class NVARCHAR(50)
+	@className NVARCHAR(50)
 AS
 BEGIN
 	SET NOCOUNT ON;
 
 	UPDATE dbo.ProductClass
-	SET Class = @class
+	SET ClassName = @className
 	WHERE Id = @id
 END
